@@ -2,7 +2,7 @@
 import { ChangeEvent, useState } from "react";
 import Input from "../components/Input";
 import { signIn, signOut, useSession } from "next-auth/react";
-import ImageButton from "@/app/components/ImageButton";
+import ImageButton from "@/app/components/Button/ImageButton";
 import axios from "axios";
 import GoogleLogin from "../components/auth/GoogleLogin";
 import KakaoLogin from "../components/auth/KakaoLogin";

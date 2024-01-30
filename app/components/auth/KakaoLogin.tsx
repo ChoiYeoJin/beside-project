@@ -1,4 +1,4 @@
-import ImageButton from "../ImageButton";
+import ImageButton from "../Button/ImageButton";
 
 export default function KakaoLogin() {
   const redirectUri = process.env.NEXT_PUBLIC_REDIRECT_URI || "";
@@ -12,7 +12,6 @@ export default function KakaoLogin() {
   )}&scope=${encodeURIComponent(scope)}&response_type=code`;
 
   const handleKakaoLogin = () => {
-    alert(authUrl);
     window.location.href = authUrl;
   };
 
