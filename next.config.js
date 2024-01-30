@@ -5,6 +5,16 @@ const withPWA = require("next-pwa")({
   disable: !isProd,
 });
 
-const nextConfig = {};
+const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/home",
+        permanent: true,
+      },
+    ];
+  },
+};
 
 module.exports = withPWA(nextConfig);

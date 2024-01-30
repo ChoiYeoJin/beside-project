@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Next.js App",
     short_name: "Next.js App",
     description: "Next.js App",
-    start_url: "/",
+    start_url: "/home",
     display: "standalone",
     background_color: "#fff",
     theme_color: "#fff",

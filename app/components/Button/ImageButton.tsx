@@ -20,7 +20,7 @@ export default function ImageButton({
         className={`flex items-center justify-center w-full h-12 px-4 py-2  bg-[${backgroundColor}] rounded-md shadow-md`}
         onClick={onClick}
       >
-        <Image src={imageSrc} alt={text} className="w-6 h-6 mr-2" />
+        <img src={imageSrc} alt={text} className="w-6 h-6 mr-2" />
         {text}
       </button>
     </div>

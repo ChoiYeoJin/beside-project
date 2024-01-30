@@ -1,4 +1,4 @@
-import ImageButton from "../ImageButton";
+import ImageButton from "../Button/ImageButton";
 
 export default function GoogleLogin() {
   const redirectUri = process.env.NEXT_PUBLIC_REDIRECT_URI || "";
@@ -11,7 +11,6 @@ export default function GoogleLogin() {
   )}&scope=${encodeURIComponent(scope)}&response_type=code&access_type=offline`;
 
   const handleGoogleLogin = () => {
-    alert(authUrl);
     window.location.href = authUrl;
   };
 

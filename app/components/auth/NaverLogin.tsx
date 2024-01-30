@@ -1,4 +1,4 @@
-import ImageButton from "../ImageButton";
+import ImageButton from "../Button/ImageButton";
 
 export default function NaverLogin() {
   const redirectUri = process.env.NEXT_PUBLIC_REDIRECT_URI || "";
@@ -12,7 +12,6 @@ export default function NaverLogin() {
   )}&state=${state}`;
 
   const handleNaverLogin = () => {
-    alert(authUrl);
     window.location.href = authUrl;
   };
 

@@ -20,7 +20,7 @@ export default function Input({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        className="border border-gray-300 p-2 rounded w-full"
+        className=" p-2 rounded w-full h-[50px]"
       />
       {errorMessage && <p className="text-red-500">{errorMessage}</p>}
     </>

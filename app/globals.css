@@ -6,6 +6,14 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  background-color: #f8f8f8;
+  font-family: "Pretendard-Regular", sans-serif;
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,12 +23,36 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
 
 body {
+  font-family: "Pretendard-Regular", sans-serif;
+}
+
+div {
+  font-family: "Pretendard-Regular", sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.selected {
+  color: white;
+  background-color: #222222;
+  border-radius: 4px;
+}
+
+.not-selected {
+  color: #eeeeee;
+  background-color: #a5a5a5;
+  border-radius: 4px;
 }
