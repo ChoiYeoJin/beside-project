@@ -1,5 +1,6 @@
 import Footer from "./Footer";
 import Header from "./Header";
+import Main from "./Main";
 
 type MainContainerProps = {
   text?: string;
@@ -17,7 +18,7 @@ export default function MainContainer({
   return (
     <div>
       <Header text={text ?? "키키"} isArrow={isArrow} />
-      <div className="max-w-3xl mx-auto px-[16px]">{children}</div>
+      <Main>{children}</Main>
       <div className="w-full h-[100px]"></div>
       <Footer />
     </div>

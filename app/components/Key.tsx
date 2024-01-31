@@ -1,16 +1,33 @@
+import React from "react";
+
 type KeyProps = {
   character: string;
   isActive: boolean;
+  size?: number;
+  width?: number;
 };
 
-export default function Key({ character, isActive }: KeyProps) {
+export default function Key({ character, isActive, size, width }: KeyProps) {
+  // CSS 커스텀 속성을 설정합니다.
+  const customStyle: React.CSSProperties & {
+    "--key-flex-grow": string;
+    "--key-width": string;
+  } = {
+    "--key-flex-grow": `${size ?? 1}`,
+    "--key-width": width ? `${width}px` : "20px",
+  };
+
   const keyClass = isActive
-    ? " text- bg-primary text-white m-1 p-1 rounded  cursor-pointer select-none border shadow-md"
-    : "bg-white text-black m-1 p-1 rounded  cursor-pointer select-none border shadow-md";
+    ? `flex flex-col justify-end bg-primary text-white p-1 rounded-[2px]`
+    : `flex flex-col justify-end bg-white text-gray300 p-1 rounded-[2px]`;
 
   return (
-    <div id={character} className={keyClass}>
-      <p className="text-xs">{character}</p>
+    <div
+      id={character}
+      className={`${keyClass} flex-grow min-w-[var(--key-width)] min-h-[20px] mb-[3.5px] font-medium`}
+      style={customStyle}
+    >
+      <p className="text-[6px]">{character}</p>
     </div>
   );
 }

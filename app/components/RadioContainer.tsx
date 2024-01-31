@@ -2,11 +2,20 @@
 
 import React, { useEffect, useState } from "react";
 
-export default function RadioContainer({ items }: { items: string[] }) {
+type RadioContainerProps = {
+  items: string[];
+  setItem?: (item: string) => void;
+};
+
+export default function RadioContainer({
+  items,
+  setItem,
+}: RadioContainerProps) {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
   const handleItemClick = (item: string) => {
     setSelectedItem(item); // 선택된 항목 업데이트
+    if (setItem) setItem(item);
   };
 
   useEffect(() => {

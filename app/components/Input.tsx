@@ -22,7 +22,9 @@ export default function Input({
         onChange={onChange}
         className=" p-2 rounded w-full h-[50px]"
       />
-      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+      {errorMessage && (
+        <p className="text-red-500 text-[10px]">{errorMessage}</p>
+      )}
     </>
   );
 }

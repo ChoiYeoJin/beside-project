@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import Key from "./Key"; // Key 컴포넌트를 임포트합니다.
+import Blank from "./Blank";
 
 export default function Keyboard({ keys }: { keys: string[] }) {
   return (
     <>
-      <div className="keyboard">
+      <div className="keyboard max-w-[380px] w-full">
+        <Blank height="30px" />
         {/* Row 1 */}
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-[1.5px]">
           <Key character="`" isActive={keys.includes("`")} />
           <Key character="1" isActive={keys.includes("1")} />
           <Key character="2" isActive={keys.includes("2")} />
@@ -20,11 +22,11 @@ export default function Keyboard({ keys }: { keys: string[] }) {
           <Key character="0" isActive={keys.includes("0")} />
           <Key character="-" isActive={keys.includes("-")} />
           <Key character="=" isActive={keys.includes("=")} />
-          <Key character="delete" isActive={keys.includes("delete")} />
+          <Key character="delete" size={3} isActive={keys.includes("delete")} />
         </div>
         {/* Row 2 */}
-        <div className="flex justify-center">
-          <Key character="tab" isActive={keys.includes("tab")} />
+        <div className="flex justify-center gap-[1.5px]">
+          <Key character="tab" size={3} isActive={keys.includes("tab")} />
           <Key character="Q" isActive={keys.includes("Q")} />
           <Key character="W" isActive={keys.includes("W")} />
           <Key character="E" isActive={keys.includes("E")} />
@@ -37,11 +39,15 @@ export default function Keyboard({ keys }: { keys: string[] }) {
           <Key character="P" isActive={keys.includes("P")} />
           <Key character="[" isActive={keys.includes("[")} />
           <Key character="]" isActive={keys.includes("]")} />
-          <Key character="\\" isActive={keys.includes("\\")} />
+          <Key character="\" isActive={keys.includes("\\")} />
         </div>
         {/* Row 3 */}
-        <div className="flex justify-center">
-          <Key character="caps" isActive={keys.includes("caps lock")} />
+        <div className="flex justify-center gap-[1.5px]">
+          <Key
+            character="caps lock"
+            size={3}
+            isActive={keys.includes("caps lock")}
+          />
           <Key character="A" isActive={keys.includes("A")} />
           <Key character="S" isActive={keys.includes("S")} />
           <Key character="D" isActive={keys.includes("D")} />
@@ -53,11 +59,16 @@ export default function Keyboard({ keys }: { keys: string[] }) {
           <Key character="L" isActive={keys.includes("L")} />
           <Key character=";" isActive={keys.includes(";")} />
           <Key character="'" isActive={keys.includes("'")} />
-          <Key character="enter" isActive={keys.includes("enter")} />
+          <Key character="enter" size={3} isActive={keys.includes("enter")} />
         </div>
         {/* Row 4 */}
-        <div className="flex justify-center">
-          <Key character="shift" isActive={keys.includes("shift")} />
+        <div className="flex justify-center gap-[1.5px]">
+          <Key
+            character="shift"
+            size={3}
+            width={40}
+            isActive={keys.includes("shift")}
+          />
           <Key character="Z" isActive={keys.includes("Z")} />
           <Key character="X" isActive={keys.includes("X")} />
           <Key character="C" isActive={keys.includes("C")} />
@@ -68,16 +79,26 @@ export default function Keyboard({ keys }: { keys: string[] }) {
           <Key character="," isActive={keys.includes(",")} />
           <Key character="." isActive={keys.includes(".")} />
           <Key character="/" isActive={keys.includes("/")} />
-          <Key character="shift" isActive={keys.includes("shift")} />
+          <Key
+            character="shift"
+            size={3}
+            width={40}
+            isActive={keys.includes("shift")}
+          />
         </div>
         {/* Row 5 */}
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-[1.5px]">
           <Key character="ctrl" isActive={keys.includes("ctrl")} />
-          <Key character="window" isActive={keys.includes("window")} />
-          <Key character="alt" isActive={keys.includes("alt")} />
-          <Key character="space bar" isActive={keys.includes("space bar")} />
-          <Key character="alt" isActive={keys.includes("alt")} />
-          <Key character="fn" isActive={keys.includes("fn")} />
+          <Key character="option" isActive={keys.includes("window")} />
+          <Key character="cmd" isActive={keys.includes("alt")} />
+          <Key
+            character=""
+            size={3}
+            width={170}
+            isActive={keys.includes("space bar")}
+          />
+          <Key character="cmd" isActive={keys.includes("alt")} />
+          <Key character="option" isActive={keys.includes("fn")} />
           <Key character="ctrl" isActive={keys.includes("ctrl2")} />
         </div>
       </div>

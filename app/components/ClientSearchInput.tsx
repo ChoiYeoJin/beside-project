@@ -9,14 +9,14 @@ export default function ClientSearchInput() {
   };
 
   return (
-    <div>
+    <div className="relative">
       <Input
         type="text"
         placeholder="궁금한 기능을 입력해 보세요."
         onChange={handleSearch}
         value={search}
       />
-      <div className="absolute right-[34px] -translate-y-9">
+      <div className="absolute right-[16px] -translate-y-9">
         <Image
           src="/icons/MagnifyingGlass.png"
           alt="search"
