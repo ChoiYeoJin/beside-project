@@ -12,7 +12,7 @@ import Title from "../components/Title";
 import Blank from "../components/Blank";
 import TextButton from "../components/Button/TextButton";
 import Main from "../components/Main";
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 
 export default function Register() {
   const [emailError, setEmailError] = useState("");

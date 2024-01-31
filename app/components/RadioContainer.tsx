@@ -23,18 +23,34 @@ export default function RadioContainer({
   }, []);
 
   return (
-    <div className="flex gap-[10px]">
-      {items.map((item, index) => (
-        <div
-          key={index}
-          className={selectedItem === item ? "selected" : "not-selected"}
-          onClick={() => handleItemClick(item)}
-        >
-          <div className="my-[10px] mx-[12px] font-bold text-[16px]">
-            {item}
-          </div>
-        </div>
-      ))}
+    <div className="overflow-x-auto whitespace-nowrap scroll-snap-x mx-[-16px]">
+      {items.map((item, index) => {
+        if (index === 0) {
+          return (
+            <div
+              key={index}
+              className={`inline-block scroll-snap-align mr-[10px] ml-4 ${
+                selectedItem === item ? "selected" : "not-selected"
+              }`}
+              onClick={() => handleItemClick(item)}
+            >
+              <div className="my-[10px] mx-[12px] text-[16px]">{item}</div>
+            </div>
+          );
+        } else {
+          return (
+            <div
+              key={index}
+              className={`inline-block scroll-snap-align mr-[10px] ${
+                selectedItem === item ? "selected" : "not-selected"
+              }`}
+              onClick={() => handleItemClick(item)}
+            >
+              <div className="my-[10px] mx-[12px] text-[16px]">{item}</div>
+            </div>
+          );
+        }
+      })}
     </div>
   );
 }

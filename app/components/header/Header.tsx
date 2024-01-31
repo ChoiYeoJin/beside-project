@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BackButton from "./Button/BackButton";
+import BackButton from "../Button/BackButton";
 
 type HeaderProps = {
   text: string;

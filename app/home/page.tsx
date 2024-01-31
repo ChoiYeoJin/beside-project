@@ -1,6 +1,7 @@
 // pages/index.tsx
 import axios from "axios";
 import { GetServerSideProps } from "next";
+import Image from "next/image";
 import React from "react";
 import MainContainer from "../components/MainContainer";
 import Blank from "../components/Blank";
@@ -28,10 +29,11 @@ export default function Home() {
           <Link href={"/list/figma"}>
             <Card height="60px" imgSrc="/icons/cat.png" />
           </Link>
-          <Card height="60px" imgSrc="/icons/cat.png" />
-          <Card height="60px" imgSrc="/icons/cat.png" />
-          <Card height="60px" imgSrc="/icons/cat.png" />
-          <Card height="60px" imgSrc="/icons/cat.png" />
+          <Link href={"/bookmark"}>
+            <div className="flex items-center justify-center h-[60px] rounded-md font-semibold text-base text-gray300 bg-gray100">
+              더보기
+            </div>
+          </Link>
         </div>
         <Blank height="40px" />
         <Title text="실시간 인기 순위" />

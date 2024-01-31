@@ -66,7 +66,7 @@ export default function Keyboard({ keys }: { keys: string[] }) {
           <Key
             character="shift"
             size={3}
-            width={40}
+            width={55}
             isActive={keys.includes("shift")}
           />
           <Key character="Z" isActive={keys.includes("Z")} />
@@ -82,7 +82,7 @@ export default function Keyboard({ keys }: { keys: string[] }) {
           <Key
             character="shift"
             size={3}
-            width={40}
+            width={55}
             isActive={keys.includes("shift")}
           />
         </div>

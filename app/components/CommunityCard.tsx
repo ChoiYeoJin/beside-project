@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Blank from "./Blank";
 
 type CommunityCardProps = {
   userName: string;
@@ -19,34 +20,36 @@ export default function CommunityCard({
     <>
       {isMain && (
         <div>
-          <div className="bg-white">
-            <div className="flex items-center m-2">
+          <div className="bg-opacity-100 border-b border-gray100 px-4">
+            <div className="flex items-center gap-[10px] pt-5">
               <div className="w-[30px] h-[30px] rounded-full overflow-hidden">
                 <Image src={imgSrc} alt={"profile"} width={30} height={30} />
               </div>
-              <div className="m-2">
-                <p>{userName}</p>
-                <p>{createdAt}</p>
+              <div className="w-[77px] h-[38px]">
+                <p className="font-medium text-base">{userName}</p>
+                <p className="text-xs text-gray300 ">{createdAt}</p>
               </div>
             </div>
-            <div className="m-2">{mainText}</div>
+            <Blank height="20px" />
+            <div className="font-[#222222]">{mainText}</div>
             <div></div>
           </div>
         </div>
       )}
       {!isMain && (
         <div>
-          <div className="bg-gray-300">
-            <div className="flex items-center m-2">
+          <div className="bg-white  px-4">
+            <div className="flex items-center gap-[10px] pt-5">
               <div className="w-[30px] h-[30px] rounded-full overflow-hidden">
                 <Image src={imgSrc} alt={"profile"} width={30} height={30} />
               </div>
-              <div className="m-2">
-                <p>{userName}</p>
-                <p>{createdAt}</p>
+              <div className="w-[77px] h-[38px]">
+                <p className="font-medium text-base">{userName}</p>
+                <p className="text-xs text-gray300 ">{createdAt}</p>
               </div>
             </div>
-            <div className="m-2">{mainText}</div>
+            <Blank height="20px" />
+            <div className="font-[#222222]">{mainText}</div>
             <div></div>
           </div>
         </div>

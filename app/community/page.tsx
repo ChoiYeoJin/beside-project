@@ -2,11 +2,43 @@ import Link from "next/link";
 import CommunityCard from "../components/CommunityCard";
 import MainContainer from "../components/MainContainer";
 import RadioContainer from "../components/RadioContainer";
+import ClientSearchInput from "../components/ClientSearchInput";
+import Blank from "../components/Blank";
+import Main from "../components/Main";
+import HeaderContainer from "../components/header/HeaderContainer";
+import Image from "next/image";
+import Footer from "../components/Footer";
+import CommunityCategory from "./CommunityCategory";
 
 export default function Community() {
   return (
-    <MainContainer text="커뮤니티">
-      <RadioContainer items={["전체", "기획", "개발", "디자인"]} />
+    <div>
+      <HeaderContainer>
+        <div>
+          <div className="py-[18px] ml-4 font-bold text-xl">질문게시판</div>
+        </div>
+        <Link href={"/community/new"}>
+          <div className="absolute right-[20px] top-[15px]">
+            <Image
+              src={"/icons/PencilSimpleLine.svg"}
+              alt="logo"
+              width={30}
+              height={30}
+            />
+          </div>
+        </Link>
+        <div className="absolute right-[71px] top-[15px]">
+          <Image src={"/icons/bell.svg"} alt="logo" width={30} height={30} />
+        </div>
+      </HeaderContainer>
+      <Main>
+        <Blank height="30px" />
+        <ClientSearchInput />
+        <Blank height="30px" />
+        <CommunityCategory />
+        <Blank height="30px" />
+      </Main>
+      <div className="border-b border-gray100"></div>
       <div>
         <Link href={"/community/post/1"}>
           <CommunityCard
@@ -18,6 +50,7 @@ export default function Community() {
           />
         </Link>
       </div>
-    </MainContainer>
+      <Footer />
+    </div>
   );
 }
