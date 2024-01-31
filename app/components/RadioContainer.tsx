@@ -23,14 +23,16 @@ export default function RadioContainer({
   }, []);
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-[10px]">
       {items.map((item, index) => (
         <div
           key={index}
           className={selectedItem === item ? "selected" : "not-selected"}
           onClick={() => handleItemClick(item)}
         >
-          <div className="m-[10px] font-bold text-[16px]">{item}</div>
+          <div className="my-[10px] mx-[12px] font-bold text-[16px]">
+            {item}
+          </div>
         </div>
       ))}
     </div>

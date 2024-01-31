@@ -10,7 +10,7 @@ export default function Card({ height, imgSrc }: CardProps) {
       style={{ height: height }}
       className="flex items-center justify-center shadow-md bg-white rounded-md"
     >
-      <Image src={imgSrc} alt="logo" width={24} height={24} />
+      <Image src={imgSrc} alt="logo" width={30} height={30} />
     </div>
   );
 }

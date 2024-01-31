@@ -17,7 +17,7 @@ export default function MainContainer({
 }: MainContainerProps) {
   return (
     <div>
-      <Header text={text ?? "키키"} isArrow={isArrow} />
+      <Header text={text ?? ""} isArrow={isArrow} />
       <Main>{children}</Main>
       <div className="w-full h-[100px]"></div>
       <Footer />

@@ -18,7 +18,7 @@ export default function ClientSearchInput() {
       />
       <div className="absolute right-[16px] -translate-y-9">
         <Image
-          src="/icons/MagnifyingGlass.png"
+          src="/icons/MagnifyingGlass.svg"
           alt="search"
           width={24}
           height={24}

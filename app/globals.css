@@ -52,7 +52,7 @@ div {
 }
 
 .not-selected {
-  color: #eeeeee;
-  background-color: #a5a5a5;
+  color: #a5a5a5;
+  background-color: #eeeeee;
   border-radius: 4px;
 }

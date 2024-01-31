@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="flex flex-col items-center">
             <Link href={"/home"}>
               <Image
-                src="/icons/tapbar-icons/House.png"
+                src="/icons/tapbar-icons/House.svg"
                 alt="logo"
                 width={28}
                 height={28}
@@ -20,7 +20,7 @@ export default function Footer() {
           <div className="flex flex-col items-center">
             <Link href={"/programs"}>
               <Image
-                src="/icons/tapbar-icons/Program.png"
+                src="/icons/tapbar-icons/Layout.svg"
                 alt="logo"
                 width={28}
                 height={28}
@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="flex flex-col items-center">
             <Link href={"/bookmark"}>
               <Image
-                src="/icons/tapbar-icons/BookMarkSimple.png"
+                src="/icons/tapbar-icons/BookMarkSimple.svg"
                 alt="logo"
                 width={28}
                 height={28}
@@ -42,7 +42,7 @@ export default function Footer() {
           <div className="flex flex-col items-center">
             <Link href={"/community"}>
               <Image
-                src="/icons/tapbar-icons/ChatsCircle.png"
+                src="/icons/tapbar-icons/ChatsCircle.svg"
                 alt="logo"
                 width={28}
                 height={28}
@@ -53,7 +53,7 @@ export default function Footer() {
           <div className="flex flex-col items-center">
             <Link href={"/my-page"}>
               <Image
-                src="/icons/tapbar-icons/User.png"
+                src="/icons/tapbar-icons/User.svg"
                 alt="logo"
                 width={28}
                 height={28}

@@ -21,10 +21,10 @@ export default function Home() {
       <div>
         <Blank height="30px" />
         <ClientSearchInput />
-        <Blank height="30px" />
+        <Blank height="40px" />
         <Title text="내 즐겨찾기" />
-        <Blank height="30px" />
-        <div className={`grid gap-3 grid-cols-3`}>
+        <Blank height="20px" />
+        <div className={`grid gap-[11px] grid-cols-3`}>
           <Link href={"/list/figma"}>
             <Card height="60px" imgSrc="/icons/cat.png" />
           </Link>
