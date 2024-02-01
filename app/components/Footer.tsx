@@ -47,6 +47,7 @@ export default function Footer({ selected }: { selected?: string }) {
   };
   return (
     <>
+      <div className="h-[82px] w-full"></div>
       <div className="fixed bottom-0 w-full h-[82px] bg-white pt-[8px]">
         <div className="flex justify-around">
           {Object.entries(tabImages).map(([tabName, images]) => (

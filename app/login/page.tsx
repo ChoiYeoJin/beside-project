@@ -1,20 +1,21 @@
 "use client";
 import { ChangeEvent, useState } from "react";
-import Input from "../../components/Input";
+import Input from "../components/Input";
 import { signIn, signOut, useSession } from "next-auth/react";
 import ImageButton from "@/app/components/Button/ImageButton";
 import axios from "axios";
-import GoogleLogin from "../../components/auth/GoogleLogin";
-import KakaoLogin from "../../components/auth/KakaoLogin";
-import NaverLogin from "../../components/auth/NaverLogin";
-import MainContainer from "../../components/MainContainer";
-import Title from "../../components/Title";
-import Blank from "../../components/Blank";
-import TextButton from "../../components/Button/TextButton";
+import GoogleLogin from "../components/auth/GoogleLogin";
+import KakaoLogin from "../components/auth/KakaoLogin";
+import NaverLogin from "../components/auth/NaverLogin";
+import MainContainer from "../components/MainContainer";
+import Title from "../components/Title";
+import Blank from "../components/Blank";
+import TextButton from "../components/Button/TextButton";
 import { validateEmail, validatePassword } from "@/utils/validate";
-import Main from "../../components/Main";
-import HeaderLeftText from "../../components/header/HeaderLeftText";
+import Main from "../components/Main";
+import HeaderLeftText from "../components/header/HeaderLeftText";
 import Link from "next/link";
+import Footer from "../components/Footer";
 
 export default function Login() {
   const [emailError, setEmailError] = useState("");
@@ -95,6 +96,7 @@ export default function Login() {
           </div>
         </div>
       </Main>
+      <Footer />
     </div>
   );
 }

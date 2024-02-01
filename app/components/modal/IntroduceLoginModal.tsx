@@ -58,7 +58,7 @@ export default function IntroduceLoginModal({
           >
             다음에 할게요
           </div>
-          <Link href={"/pages/login"}>
+          <Link href={"../../login"}>
             <div className="w-[150px] h-[56px] bg-primary text-[#222222] text-[15px] font-bold flex items-center justify-center">
               네, 가입할게요
             </div>
