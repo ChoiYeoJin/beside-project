@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import RadioContainer from "../components/RadioContainer";
+import RadioContainer from "../../components/RadioContainer";
 import RankList from "./RankList";
-import Blank from "../components/Blank";
+import Blank from "../../components/Blank";
 
 export default function Rankings() {
   const [rankType, setRankType] = useState<string>("프로그램");

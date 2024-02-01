@@ -3,15 +3,12 @@ import axios from "axios";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
 import React from "react";
-import MainContainer from "../components/MainContainer";
-import Blank from "../components/Blank";
-import Title from "../components/Title";
-import Card from "../components/Card";
+import MainContainer from "../../components/MainContainer";
+import Blank from "../../components/Blank";
+import Title from "../../components/Title";
+import Card from "../../components/Card";
 import Link from "next/link";
-import RadioContainer from "../components/RadioContainer";
-import Input from "../components/Input";
-import SearchComponent from "../components/SearchComponent";
-import ClientSearchInput from "../components/ClientSearchInput";
+import ClientSearchInput from "../../components/ClientSearchInput";
 import Rankings from "./Rankings";
 
 export default function Home() {
@@ -26,10 +23,10 @@ export default function Home() {
         <Title text="내 즐겨찾기" />
         <Blank height="20px" />
         <div className={`grid gap-[11px] grid-cols-3`}>
-          <Link href={"/list/figma"}>
+          <Link href={"/pages/list/figma"}>
             <Card height="60px" imgSrc="/icons/cat.png" />
           </Link>
-          <Link href={"/bookmark"}>
+          <Link href={"/pages/bookmark"}>
             <div className="flex items-center justify-center h-[60px] rounded-md font-semibold text-base text-gray300 bg-gray100">
               더보기
             </div>

@@ -1,14 +1,14 @@
 import Link from "next/link";
-import CommunityCard from "../components/CommunityCard";
-import MainContainer from "../components/MainContainer";
-import RadioContainer from "../components/RadioContainer";
-import ClientSearchInput from "../components/ClientSearchInput";
-import Blank from "../components/Blank";
-import Main from "../components/Main";
-import HeaderContainer from "../components/header/HeaderContainer";
+import CommunityCard from "@/app/components/CommunityCard";
+import MainContainer from "@/app/components/MainContainer";
+import RadioContainer from "@/app/components/RadioContainer";
+import ClientSearchInput from "@/app/components/ClientSearchInput";
+import Blank from "@/app/components/Blank";
+import Main from "@/app/components/Main";
+import HeaderContainer from "@/app/components/header/HeaderContainer";
 import Image from "next/image";
-import Footer from "../components/Footer";
-import CommunityCategory from "./CommunityCategory";
+import Footer from "@/app/components/Footer";
+import CommunityCategory from "../../components/CommunityCategory";
 
 export default function Community() {
   return (
@@ -17,7 +17,7 @@ export default function Community() {
         <div>
           <div className="py-[18px] ml-4 font-bold text-xl">질문게시판</div>
         </div>
-        <Link href={"/community/new"}>
+        <Link href={"../community/new"}>
           <div className="absolute right-[20px] top-[15px]">
             <Image
               src={"/icons/PencilSimpleLine.svg"}
@@ -40,7 +40,7 @@ export default function Community() {
       </Main>
       <div className="border-b border-gray100"></div>
       <div>
-        <Link href={"/community/post/1"}>
+        <Link href={"../community/post/1"}>
           <CommunityCard
             userName="kiki"
             createdAt="2024.01.30"

@@ -20,7 +20,6 @@ export default function MainContainer({
       <Header text={text ?? ""} isArrow={isArrow} />
       <Main>{children}</Main>
       <div className="w-full h-[100px]"></div>
-      <Footer />
     </div>
   );
 }

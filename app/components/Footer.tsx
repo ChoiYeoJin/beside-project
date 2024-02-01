@@ -50,13 +50,14 @@ export default function Footer({ selected }: { selected?: string }) {
       <div className="fixed bottom-0 w-full h-[82px] bg-white pt-[8px]">
         <div className="flex justify-around">
           {Object.entries(tabImages).map(([tabName, images]) => (
-            <FooterIcon
-              key={tabName}
-              tabName={tabName}
-              imgSrc={activeTab === tabName ? images.active : images.default}
-              name={images.name}
-              onClick={handleTabClick}
-            />
+            <div key={tabName}>
+              <FooterIcon
+                tabName={tabName}
+                imgSrc={activeTab === tabName ? images.active : images.default}
+                name={images.name}
+                onClick={handleTabClick}
+              />
+            </div>
           ))}
         </div>
       </div>

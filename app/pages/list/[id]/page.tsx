@@ -1,5 +1,5 @@
 import MainContainer from "@/app/components/MainContainer";
-import Keyboard from "../../components/Keyboard";
+import Keyboard from "@/app/components/Keyboard";
 import SearchInput from "@/app/components/ClientSearchInput";
 import Blank from "@/app/components/Blank";
 import KeyList from "@/app/components/KeyList";

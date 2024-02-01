@@ -4,7 +4,7 @@ import Blank from "@/app/components/Blank";
 import BackButton from "@/app/components/Button/BackButton";
 import HeaderContainer from "@/app/components/header/HeaderContainer";
 import Main from "@/app/components/Main";
-import CommunityCategory from "@/app/components/CommunityCategory";
+import CommunityCategory from "../../../components/CommunityCategory";
 import { useEffect, useState } from "react";
 import { useFooterStore } from "@/store/FooterStore";
 

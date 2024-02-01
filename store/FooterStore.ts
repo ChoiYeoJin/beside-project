@@ -5,10 +5,14 @@ import create from "zustand";
 type FooterState = {
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  isHidden: boolean;
+  setIsHidden: (isHidden: boolean) => void;
 };
 
 // 상태와 액션을 포함하는 스토어 생성
 export const useFooterStore = create<FooterState>((set) => ({
   activeTab: "home", // 초기 상태 값
   setActiveTab: (tab) => set({ activeTab: tab }),
+  isHidden: false,
+  setIsHidden: (isHidden) => set({ isHidden }),
 }));

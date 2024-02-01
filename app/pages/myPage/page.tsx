@@ -1,8 +1,8 @@
 "use client";
-import MainContainer from "../components/MainContainer";
+import MainContainer from "../../components/MainContainer";
 import Image from "next/image";
-import useModal from "../hooks/useModal";
-import ModalController from "../components/modal/ModalController";
+import useModal from "../../hooks/useModal";
+import ModalController from "../../components/modal/ModalController";
 
 export default function MyPage() {
   return (

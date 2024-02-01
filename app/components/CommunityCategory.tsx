@@ -1,4 +1,4 @@
-import RadioContainer from "../components/RadioContainer";
+import RadioContainer from "@/app/components/RadioContainer";
 
 export default function CommunityCategory() {
   return (
