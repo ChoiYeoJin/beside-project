@@ -27,8 +27,6 @@ export default function RootLayout({
         <meta name="theme-color" content="#33C481" />
       </head>
       <body className={inter.className}>
-        <div id="pwa-header"></div>
-
         <div>{children}</div>
       </body>
     </html>
