@@ -1,3 +1,4 @@
+"use client";
 import { useCommunityStore } from "@/store/CommunityStore";
 
 export default function PostList() {
@@ -6,7 +7,7 @@ export default function PostList() {
   return (
     <>
       {postList.map((post: Post) => (
-        <div>{post.title}</div>
+        <div key={post.id}>{post.title}</div>
       ))}
     </>
   );
