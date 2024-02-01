@@ -25,6 +25,11 @@ export default function RootLayout({
         <meta name="theme-color" content="#ff0000" />
       </head>
       <body className={inter.className}>
+        <div
+          style={{ height: "env(safe-area-inset-top)" }}
+          className="bg-primary;"
+        ></div>
+
         <div>{children}</div>
       </body>
     </html>

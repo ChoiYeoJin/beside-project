@@ -13,6 +13,7 @@ const config: Config = {
         gray100: "#EEEEEE",
         gray300: "#A5A5A5",
         black: "#222222",
+        gray50: "#f8f8f8",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
