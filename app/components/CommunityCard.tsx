@@ -32,7 +32,30 @@ export default function CommunityCard({
             </div>
             <Blank height="20px" />
             <div className="font-[#222222]">{mainText}</div>
-            <div></div>
+            <Blank height="20px" />
+            <div className="flex items-center">
+              <div className="mr-[5px]">
+                <Image
+                  src={"/icons/HeartEmpty.svg"}
+                  alt="logo"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <div className="text-[14px] text-gray300 mr-[10px]">
+                좋아요 00
+              </div>
+              <div className="mr-[5px]">
+                <Image
+                  src={"/icons/ChatCircle.svg"}
+                  alt="logo"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <div className="text-[14px] text-gray300 mr-[5px]">댓글 00</div>
+            </div>
+            <Blank height="20px" />
           </div>
         </div>
       )}
@@ -50,7 +73,30 @@ export default function CommunityCard({
             </div>
             <Blank height="20px" />
             <div className="font-[#222222]">{mainText}</div>
-            <div></div>
+            <Blank height="20px" />
+            <div className="flex items-center">
+              <div className="mr-[5px]">
+                <Image
+                  src={"/icons/HeartEmpty.svg"}
+                  alt="logo"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <div className="text-[14px] text-gray300 mr-[10px]">
+                좋아요 00
+              </div>
+              <div className="mr-[5px]">
+                <Image
+                  src={"/icons/ChatCircle.svg"}
+                  alt="logo"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <div className="text-[14px] text-gray300 mr-[5px]">댓글 00</div>
+            </div>
+            <Blank height="20px" />
           </div>
         </div>
       )}

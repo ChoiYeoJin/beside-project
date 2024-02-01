@@ -52,7 +52,7 @@ export default function Post({ params }: { params: { id: string } }) {
           onChange={handleComment}
           className="w-full h-[49px] border border-black/10 rounded-[5px] pl-5 pr-14"
         />
-        <div className="absolute right-[36px] top-[35px]">
+        <div className="absolute right-[36px] top-[34px]">
           {isActive && <div className="text-primary">게시</div>}
           {!isActive && <div className="text-gray300">게시</div>}
         </div>

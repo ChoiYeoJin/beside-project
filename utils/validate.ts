@@ -27,3 +27,5 @@ function validateNickname(nickname: string): string {
   }
   return "";
 }
+
+export { validateEmail, validatePassword, validateNickname };

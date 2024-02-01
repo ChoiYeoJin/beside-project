@@ -17,9 +17,7 @@ export default function KakaoLogin() {
 
   return (
     <ImageButton
-      text="Kakao로 로그인"
-      imageSrc="/icons/social-icons/kakao_icon.png"
-      backgroundColor="#FEE500"
+      imageSrc="/icons/social-icons/kakao.svg"
       onClick={handleKakaoLogin}
     />
   );

@@ -34,11 +34,11 @@ export default function BookmarkKeys() {
         <SearchInput />
         <Blank height="40px" />
         <div
-          className="grid grid-cols-2 gap-y-[10px]"
+          className="grid grid-cols-2 gap-y-[10px] gap-x-[20px]"
           style={{ gridTemplateColumns: "70px auto" }}
         >
           <div className="flex items-center">
-            <div className="text-[14px] text-gray300 font-semibold w-auto h-[17px] mr-[20px]">
+            <div className="text-[14px] text-gray300 font-semibold w-auto h-[17px] ">
               프로그램
             </div>
           </div>
@@ -46,7 +46,7 @@ export default function BookmarkKeys() {
             items={["추천", "전체", "필수", "프로그램", "프로그램", "프로그램"]}
           />
           <div className="flex items-center">
-            <div className="text-[14px] text-gray300 font-semibold w-[50px]  h-[17px]  mr-[20px]">
+            <div className="text-[14px] text-gray300 font-semibold w-[50px]  h-[17px] ">
               분류
             </div>
           </div>

@@ -16,9 +16,7 @@ export default function GoogleLogin() {
 
   return (
     <ImageButton
-      text="Google로 로그인"
-      imageSrc="https://img.icons8.com/color/48/000000/google-logo.png"
-      backgroundColor="white"
+      imageSrc="icons/social-icons/google.svg"
       onClick={handleGoogleLogin}
     />
   );

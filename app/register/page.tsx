@@ -13,24 +13,40 @@ import Blank from "../components/Blank";
 import TextButton from "../components/Button/TextButton";
 import Main from "../components/Main";
 import Header from "../components/header/Header";
+import {
+  validateEmail,
+  validateNickname,
+  validatePassword,
+} from "@/utils/validate";
 
 export default function Register() {
   const [emailError, setEmailError] = useState("");
-
-  const [passwordError, setPasswordError] = useState("");
-  // 비밀번호 유효성 검사 함수
-
   const [email, setEmail] = useState("");
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     setEmailError(validateEmail(e.target.value));
   };
 
+  const [passwordError, setPasswordError] = useState("");
   const [password, setPassword] = useState("");
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
     validatePassword(e.target.value);
     setPasswordError(validatePassword(e.target.value));
+  };
+
+  const [passwordCheckError, setPasswordCheckError] = useState("");
+  const [passwordCheck, setPasswordCheck] = useState("");
+  const handlePasswordCheckChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPasswordCheck(e.target.value);
+    setPasswordCheckError(validatePassword(e.target.value));
+  };
+
+  const [nicknameError, setNicknameError] = useState("");
+  const [nickname, setNickname] = useState("");
+  const handleNicknameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setNickname(e.target.value);
+    setNicknameError(validateNickname(e.target.value));
   };
 
   const handleLoginButton = async () => {};
@@ -75,9 +91,9 @@ export default function Register() {
                   <Input
                     type="password"
                     placeholder="비밀번호를 확인해 주세요"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    errorMessage={passwordError}
+                    value={passwordCheck}
+                    onChange={handlePasswordCheckChange}
+                    errorMessage={passwordCheckError}
                   />
                 </div>
                 <Blank height="40px" />
@@ -87,11 +103,11 @@ export default function Register() {
                 <Blank height="40px" />
                 <div>
                   <Input
-                    type="password"
-                    placeholder="비밀번호를 확인해 주세요"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    errorMessage={passwordError}
+                    type="text"
+                    placeholder="닉네임를 입력해 주세요"
+                    value={nickname}
+                    onChange={handleNicknameChange}
+                    errorMessage={nicknameError}
                   />
                 </div>
                 <Blank height="40px" />

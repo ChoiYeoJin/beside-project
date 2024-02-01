@@ -1,16 +1,17 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import { SetStateAction, useEffect, useState } from "react";
+import { useFooterStore } from "@/store/FooterStore";
+import { useEffect } from "react";
+import FooterIcon from "./icon/FooterIcon";
 
 export default function Footer({ selected }: { selected?: string }) {
-  const [selectedTab, setSelectedTab] = useState("home");
+  const activeTab = useFooterStore((state) => state.activeTab);
+  const setActiveTab = useFooterStore((state) => state.setActiveTab);
 
   useEffect(() => {
     // 로컬 저장소에서 선택된 탭을 가져옵니다.
-    const storedSelectedTab = selected ?? localStorage.getItem("selectedTab");
-    if (storedSelectedTab) {
-      setSelectedTab(storedSelectedTab);
+    const storedSelectedTab = selected ?? activeTab;
+    if (storedSelectedTab !== activeTab) {
+      setActiveTab(storedSelectedTab);
     }
   }, []);
 
@@ -42,29 +43,20 @@ export default function Footer({ selected }: { selected?: string }) {
     },
   };
   const handleTabClick = (tabName: string) => {
-    setSelectedTab(tabName);
-    localStorage.setItem("selectedTab", tabName);
+    setActiveTab(tabName);
   };
   return (
     <>
       <div className="fixed bottom-0 w-full h-[82px] bg-white pt-[8px]">
         <div className="flex justify-around">
-          {Object.entries(tabImages).map(([tabName, images], index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center"
-              onClick={() => handleTabClick(tabName)}
-            >
-              <Link href={`/${tabName}`}>
-                <Image
-                  src={selectedTab === tabName ? images.active : images.default}
-                  alt={tabName}
-                  width={28}
-                  height={28}
-                />
-              </Link>
-              <div className="text-[10px]">{images.name}</div>
-            </div>
+          {Object.entries(tabImages).map(([tabName, images]) => (
+            <FooterIcon
+              key={tabName}
+              tabName={tabName}
+              imgSrc={activeTab === tabName ? images.active : images.default}
+              name={images.name}
+              onClick={handleTabClick}
+            />
           ))}
         </div>
       </div>

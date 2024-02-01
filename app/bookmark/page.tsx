@@ -15,9 +15,6 @@ import Footer from "../components/Footer";
 export default function Bookmark() {
   const [selectedItem, setSelectedItem] = useState<string | null>("프로그램");
 
-  useEffect(() => {
-    localStorage.setItem("selectedTab", "bookmark");
-  }, []);
   return (
     <>
       <HeaderLeftText text="즐겨찾기" />
@@ -38,7 +35,7 @@ export default function Bookmark() {
         )}
         {selectedItem === "단축키" && <BookmarkKeys />}
       </Main>
-      <Footer />
+      <Footer selected="bookmark" />
     </>
   );
 }

@@ -17,9 +17,7 @@ export default function NaverLogin() {
 
   return (
     <ImageButton
-      text="Naver로 로그인"
-      imageSrc="/icons/social-icons/naver_icon.png" // 네이버 로그인 버튼 이미지 URL
-      backgroundColor="#1EC800" // 네이버 로그인 버튼 배경색
+      imageSrc="/icons/social-icons/naver.svg" // 네이버 로그인 버튼 이미지 URL
       onClick={handleNaverLogin}
     />
   );
