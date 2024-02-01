@@ -48,6 +48,14 @@ div {
   }
 }
 
+#pwa-header {
+  position: sticky;
+  top: 0;
+  padding: 0.5rem 1rem;
+  padding-top: calc(0.3rem + env(safe-area-inset-top));
+  background-color: #33c481;
+}
+
 .selected {
   color: white;
   background-color: #222222;

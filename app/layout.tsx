@@ -27,10 +27,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#33C481" />
       </head>
       <body className={inter.className}>
-        <div
-          style={{ height: "env(safe-area-inset-top)" }}
-          className="bg-primary;"
-        ></div>
+        <div id="pwa-header"></div>
 
         <div>{children}</div>
       </body>
