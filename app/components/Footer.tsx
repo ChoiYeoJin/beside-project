@@ -39,7 +39,7 @@ export default function Footer({ selected }: { selected?: string }) {
     myPage: {
       name: "마이페이지",
       default: "/icons/tapbar-icons/User.svg",
-      active: "/icons/tapbar-icons/User.svg",
+      active: "/icons/tapbar-icons/UserChecked.svg",
     },
   };
   const handleTabClick = (tabName: string) => {
@@ -57,6 +57,7 @@ export default function Footer({ selected }: { selected?: string }) {
                 imgSrc={activeTab === tabName ? images.active : images.default}
                 name={images.name}
                 onClick={handleTabClick}
+                checked={activeTab === tabName}
               />
             </div>
           ))}

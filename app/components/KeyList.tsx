@@ -7,7 +7,7 @@ export default function KeyList({ keys, isActive }: KeyListProps) {
   return (
     <>
       {keys.map((key, index) => (
-        <>
+        <div key={key}>
           {isActive && (
             <div
               key={key}
@@ -24,7 +24,7 @@ export default function KeyList({ keys, isActive }: KeyListProps) {
               {key}
             </div>
           )}
-        </>
+        </div>
       ))}
     </>
   );

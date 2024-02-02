@@ -6,7 +6,7 @@ type InputProps = {
   errorMessage?: string;
 };
 
-export default function Input({
+export default function RoundInput({
   type,
   placeholder,
   value,
@@ -20,7 +20,7 @@ export default function Input({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        className=" p-2 rounded w-full h-[50px] focus:border-primary focus:outline-none"
+        className=" p-2 rounded-lg w-full h-[50px] border border-gray100 px-5  focus:border-primary focus:outline-none"
       />
       {errorMessage && (
         <p className="text-red-500 text-[10px]">{errorMessage}</p>

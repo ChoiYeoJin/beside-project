@@ -6,6 +6,9 @@ const withPWA = require("next-pwa")({
 });
 
 const nextConfig = {
+  images: {
+    domains: [process.env.NEXT_PUBLIC_SERVER_DOMAIN], // 여기에 이미지 호스팅 도메인을 추가
+  },
   async redirects() {
     return [
       {

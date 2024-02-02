@@ -3,5 +3,5 @@ type HeaderContainerProps = {
 };
 
 export default function HeaderContainer({ children }: HeaderContainerProps) {
-  return <div className="w-full h-[60px] bg-primary">{children}</div>;
+  return <div className="w-full h-[60px] bg-gray50">{children}</div>;
 }

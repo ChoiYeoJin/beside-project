@@ -23,30 +23,32 @@ export default function RadioContainer({
   }, []);
 
   return (
-    <div className="overflow-x-auto whitespace-nowrap scroll-snap-x mx-[-16px]">
+    <div className="custom-radio overflow-x-auto whitespace-nowrap scroll-snap-x mx-[-16px]">
       {items.map((item, index) => {
         if (index === 0) {
           return (
             <div
               key={index}
-              className={`inline-block scroll-snap-align mr-[10px] ml-4 ${
+              className={`inline-block scroll-snap-align mr-[10px] ml-4 rounded-[20px] ${
                 selectedItem === item ? "selected" : "not-selected"
               }`}
               onClick={() => handleItemClick(item)}
             >
-              <div className="my-[10px] mx-[12px] text-[16px]">{item}</div>
+              <div className="my-[8px] mx-[14px] text-[14px] font-semibold">
+                {item}
+              </div>
             </div>
           );
         } else {
           return (
             <div
               key={index}
-              className={`inline-block scroll-snap-align mr-[10px] ${
+              className={`inline-block scroll-snap-align mr-[10px] rounded-[20px] ${
                 selectedItem === item ? "selected" : "not-selected"
               }`}
               onClick={() => handleItemClick(item)}
             >
-              <div className="my-[10px] mx-[12px] text-[16px]">{item}</div>
+              <div className="my-[8px] mx-[14px] text-[14px]">{item}</div>
             </div>
           );
         }

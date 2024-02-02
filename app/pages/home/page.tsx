@@ -10,6 +10,7 @@ import Card from "../../components/Card";
 import Link from "next/link";
 import ClientSearchInput from "../../components/ClientSearchInput";
 import Rankings from "./Rankings";
+import HomeSearchInput from "@/app/components/HomeSearchInput";
 
 export default function Home() {
   // 여기에서 props로 받은 데이터를 사용하여 페이지를 렌더링합니다.
@@ -18,7 +19,7 @@ export default function Home() {
     <MainContainer>
       <div>
         <Blank height="30px" />
-        <ClientSearchInput />
+        <HomeSearchInput />
         <Blank height="40px" />
         <Title text="내 즐겨찾기" />
         <Blank height="20px" />

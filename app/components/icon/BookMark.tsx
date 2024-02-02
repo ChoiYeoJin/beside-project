@@ -7,6 +7,8 @@ type BookMarkProps = {
   size?: number;
   isBlack?: boolean;
   onClick?: () => void;
+  bookmarkType?: string;
+  id?: string;
 };
 
 export default function BookMark({
@@ -14,6 +16,8 @@ export default function BookMark({
   size,
   isBlack,
   onClick,
+  bookmarkType,
+  id,
 }: BookMarkProps) {
   // isBookmarked 상태를 false로 초기화
   const [isBookmarked, setIsBookmarked] = useState(isChecked);
@@ -21,6 +25,12 @@ export default function BookMark({
   // 클릭 이벤트 핸들러
   const handleBookmarkClick = () => {
     setIsBookmarked(!isBookmarked); // 상태 토글
+    if (bookmarkType === "프로그램") {
+      if (id) addProgramBookmark(id);
+    }
+    if (bookmarkType === "단축키") {
+      if (id) addShortcutBookmark(id);
+    }
   };
 
   return (
@@ -34,8 +44,8 @@ export default function BookMark({
             : "/icons/BookmarkSimpleGray.svg"
         }
         alt="bookmark icon"
-        width={size ?? 30}
-        height={size ?? 30}
+        width={size ?? 24}
+        height={size ?? 24}
       />
     </div>
   );

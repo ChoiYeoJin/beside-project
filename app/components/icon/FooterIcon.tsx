@@ -6,6 +6,7 @@ type FooterIconProps = {
   imgSrc: string;
   name: string;
   onClick: (tabName: string) => void;
+  checked?: boolean;
 };
 
 export default function FooterIcon({
@@ -13,6 +14,7 @@ export default function FooterIcon({
   imgSrc,
   name,
   onClick,
+  checked,
 }: FooterIconProps) {
   return (
     <div
@@ -22,7 +24,16 @@ export default function FooterIcon({
       <Link href={`/pages/${tabName}`}>
         <Image src={imgSrc} alt={tabName} width={28} height={28} />
       </Link>
-      <div className="text-[10px]">{name}</div>
+      <div
+        style={
+          checked
+            ? { color: "#33C481", fontWeight: "bold" }
+            : { color: "#222222", fontWeight: "normal" }
+        }
+        className="text-[10px]"
+      >
+        {name}
+      </div>
     </div>
   );
 }

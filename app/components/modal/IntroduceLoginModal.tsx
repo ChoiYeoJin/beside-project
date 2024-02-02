@@ -28,15 +28,10 @@ export default function IntroduceLoginModal({
 
   return (
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-100 bg-[#222222]/80 backdrop-blur-sm">
-      <div className="relative bg-white w-[300px] h-[258px] rounded-[10px] overflow-hidden">
+      <div className="relative bg-white w-[300px] h-[256px] rounded-[10px] overflow-hidden">
         <Blank height="30px" />
         <div className="flex justify-center">
-          <Image
-            src="/icons/logo_keykey.svg"
-            alt="logo"
-            width={40}
-            height={40}
-          />
+          <Image src="/icons/logo.svg" alt="logo" width={60} height={21} />
         </div>
         <Blank height="30px" />
         <div className="flex flex-col items-center justify-center">
@@ -50,7 +45,7 @@ export default function IntroduceLoginModal({
             지금 바로 가입할까요?
           </div>
         </div>
-        <Blank height="32px" />
+        <Blank height="48px" />
         <div className="flex">
           <div
             onClick={close}

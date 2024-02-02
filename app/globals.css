@@ -14,14 +14,11 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
 
   font-family: "Pretendard-Regular", sans-serif;
 }
 
 *::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera*/
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,17 +53,25 @@ div {
   background-color: #33c481;
 }
 
+.custom-radio {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.custom-radio::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
 .selected {
   color: white;
   background-color: #222222;
-  border-radius: 4px;
   font-weight: bold;
 }
 
 .not-selected {
   color: #a5a5a5;
-  background-color: #eeeeee;
-  border-radius: 4px;
+  background-color: #f8f8f8;
+  border: 1px solid #eeeeee;
   font-weight: 500;
 }
 

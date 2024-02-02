@@ -2,17 +2,27 @@
 import { useState } from "react";
 import Input from "./Input";
 import Image from "next/image";
-export default function ClientSearchInput() {
+import RoundInput from "./RoundInput";
+
+type ClientSearchInputProps = {
+  onChange: (value: string) => void;
+  placeholder?: string;
+};
+export default function ClientSearchInput({
+  onChange,
+  placeholder,
+}: ClientSearchInputProps) {
   const [search, setSearch] = useState<string>("");
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
+    onChange(event.target.value);
   };
 
   return (
     <div className="relative">
-      <Input
+      <RoundInput
         type="text"
-        placeholder="궁금한 기능을 입력해 보세요."
+        placeholder={placeholder ?? "어떤 프로그램을 찾아볼까요?"}
         onChange={handleSearch}
         value={search}
       />

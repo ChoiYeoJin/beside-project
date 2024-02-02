@@ -13,8 +13,8 @@ export default function BackButton() {
       <Image
         src="/icons/chevron-back.png"
         alt="뒤로가기"
-        width={30}
-        height={30}
+        width={24}
+        height={24}
       />
     </div>
   );

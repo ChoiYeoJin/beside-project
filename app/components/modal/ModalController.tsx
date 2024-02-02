@@ -12,7 +12,7 @@ const ModalController = () => {
   }, []);
   return (
     <>
-      <button onClick={openModal}>모달 열기</button>
+      <button onClick={openModal}></button>
       {isOpen && (
         <IntroduceLoginModal
           isOpen={isOpen}

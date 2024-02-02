@@ -23,7 +23,7 @@ export default function ProgramCard({
         </div>
       </div>
       <div className="w-full">
-        <Link href={`/pages/list/${id ?? "Figma"}`}>
+        <Link href={`/pages/list/${id}`}>
           <div className="flex flex-grow justify-between w-full items-center">
             <div className="text-[16px] font-medium leading-4 w-max">
               {text}

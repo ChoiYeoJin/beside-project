@@ -11,9 +11,21 @@ import BookmarkKeys from "./BookmarkKeys";
 import Main from "../../components/Main";
 import HeaderLeftText from "../../components/header/HeaderLeftText";
 import Footer from "../../components/Footer";
+import { useNoneUserStore } from "@/store/NoneUserStore";
 
 export default function Bookmark() {
   const [selectedItem, setSelectedItem] = useState<string | null>("프로그램");
+  const programs = useNoneUserStore((state) => state.programs);
+  const getPrograms = useNoneUserStore((state) => state.getPrograms);
+
+  useEffect(() => {
+    getPrograms();
+    const fetchShortcuts = async () => {
+      await getPrograms();
+    };
+
+    fetchShortcuts();
+  }, [getPrograms, programs]);
 
   return (
     <>
@@ -30,7 +42,7 @@ export default function Bookmark() {
         {selectedItem === "프로그램" && (
           <>
             <Blank height="30px" />
-            <ProgramList items={["Figma", "test2", "test3", "test4"]} />
+            <ProgramList items={programs} />
           </>
         )}
         {selectedItem === "단축키" && <BookmarkKeys />}

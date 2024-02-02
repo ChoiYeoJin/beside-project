@@ -11,9 +11,12 @@ import ProgramList from "../../components/ProgramList";
 import Main from "../../components/Main";
 import Footer from "../../components/Footer";
 import HeaderLeftText from "../../components/header/HeaderLeftText";
+import useSWR from "swr";
+import fetchData from "@/utils/fetch";
 
-export default function Programs() {
-  // 여기에서 props로 받은 데이터를 사용하여 페이지를 렌더링합니다.
+export default async function Programs() {
+  const data = await fetchData<Program[]>("/shortcut-keys/programs");
+
   return (
     <>
       <HeaderLeftText text="프로그램" />
@@ -22,12 +25,10 @@ export default function Programs() {
         <Title text="분야" />
         <Blank height="20px" />
         <div className="w-full">
-          <RadioContainer
-            items={["전체", "문서", "협업", "디자인", "기타", "test"]}
-          />
+          <RadioContainer items={["전체", "문서", "Adobe", "협업", "기타"]} />
         </div>
         <Blank height="20px" />
-        <ProgramList items={["Figma", "test2", "test3", "test4"]} />
+        <ProgramList items={data} />
       </Main>
     </>
   );

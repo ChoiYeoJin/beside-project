@@ -88,9 +88,9 @@ export default function Keyboard({ keys }: { keys: string[] }) {
         </div>
         {/* Row 5 */}
         <div className="flex justify-center gap-[1.5px]">
-          <Key character="ctrl" isActive={keys.includes("ctrl")} />
+          <Key character="ctrl" isActive={keys.includes("Ctrl")} />
           <Key character="option" isActive={keys.includes("window")} />
-          <Key character="cmd" isActive={keys.includes("alt")} />
+          <Key character="alt" isActive={keys.includes("Alt")} />
           <Key
             character=""
             size={3}
@@ -98,7 +98,7 @@ export default function Keyboard({ keys }: { keys: string[] }) {
             isActive={keys.includes("space bar")}
           />
           <Key character="cmd" isActive={keys.includes("alt")} />
-          <Key character="option" isActive={keys.includes("fn")} />
+          <Key character="option" isActive={keys.includes("Fn")} />
           <Key character="ctrl" isActive={keys.includes("ctrl2")} />
         </div>
       </div>

@@ -10,7 +10,7 @@ export default function HeaderLeftText({ text }: { text: string }) {
       </div>
 
       <div className="absolute right-[20px] top-[15px]">
-        <Image src={"/icons/bell.svg"} alt="logo" width={30} height={30} />
+        <Image src={"/icons/bell.svg"} alt="logo" width={24} height={24} />
       </div>
     </HeaderContainer>
   );
