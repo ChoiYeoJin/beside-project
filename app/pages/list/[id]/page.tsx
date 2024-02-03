@@ -15,6 +15,7 @@ import Fuse from "fuse.js";
 import { SetStateAction, useEffect, useLayoutEffect, useState } from "react";
 import { useNoneUserStore } from "@/store/NoneUserStore";
 import { useRouter } from "next/router";
+import AlarmIcon from "@/app/components/icon/AlarmIcon";
 
 const options = {
   includeScore: true,
@@ -100,9 +101,7 @@ export default function List({ params }: { params: { id: string } }) {
           <BookMark isChecked={true} size={30} isBlack={true} />
         </div>
 
-        <div className="absolute right-[71px] top-[15px]">
-          <Image src={"/icons/bell.svg"} alt="logo" width={30} height={30} />
-        </div>
+        <AlarmIcon alarmIconType="left" />
       </HeaderContainer>
 
       <Main>

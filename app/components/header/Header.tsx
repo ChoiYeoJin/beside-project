@@ -1,5 +1,6 @@
 import Image from "next/image";
 import BackButton from "../Button/BackButton";
+import AlarmIcon from "../icon/AlarmIcon";
 
 type HeaderProps = {
   text: string;
@@ -12,14 +13,12 @@ export default function Header({ text, imgSrc, isArrow }: HeaderProps) {
     <div className="flex items-center justify-center h-[60px] bg-gray50">
       {isArrow && <BackButton />}
       {!isArrow && (
-        <div className="left-[16px] absolute my-[20px]">
+        <div className="left-[16px] absolute my-[21px]">
           <Image src={"/icons/logo.svg"} alt="logo" width={50} height={18} />
         </div>
       )}
       <div>{text}</div>
-      <div className=" right-[21px] top-[16px] absolute">
-        <Image src={"/icons/bell.svg"} alt="logo" width={24} height={24} />
-      </div>
+      <AlarmIcon alarmIconType="right" />
     </div>
   );
 }

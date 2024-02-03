@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <MainContainer>
       <div>
-        <Blank height="30px" />
+        <Blank height="20px" />
         <HomeSearchInput />
         <Blank height="40px" />
         <Title text="내 즐겨찾기" />

@@ -2,6 +2,8 @@ import axios from "axios";
 import create from "zustand";
 
 type UserState = {
+  showAlarm: boolean;
+  setAlarm: (value: boolean) => void;
   bookmarkPrograms: Program[];
   getBookmarkPrograms: () => void;
   bookmarkShortcuts: Shortcut[];
@@ -10,10 +12,14 @@ type UserState = {
 };
 
 export const useUserStore = create<UserState>((set, get) => ({
+  showAlarm: false,
   bookmarkPrograms: [],
   getBookmarkPrograms: async () => {},
   bookmarkShortcuts: [],
   getBookmarkShortcuts: async () => {},
+  setAlarm: (value: boolean) => {
+    set({ showAlarm: value });
+  },
 
   userProfile: {
     nickname: "",

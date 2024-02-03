@@ -17,7 +17,9 @@ type Post = {
 };
 
 type PostComment = {
-  post: string; // id
+  id: string;
+  post: string;
   content: string;
   author: string;
+  created_at: string;
 };

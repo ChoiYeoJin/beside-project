@@ -28,7 +28,7 @@ export default function RankList({ itemType }: RankListProps) {
           <Link href={`/pages/list/${item.platform}`} key={item.platform}>
             <div className="flex justify-between py-[10px]  px-[12px] w-full">
               <div className="flex items-center">
-                <p className="text-[#222222] font-bold  mr-[10px] text-[16px] w-[15px]">
+                <p className="text-[#222222] font-bold  mr-[10px] text-[14px] w-[15px]">
                   {index + 1}
                 </p>
                 <div className="mr-[10px]">

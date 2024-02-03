@@ -9,7 +9,7 @@ export default function BackButton() {
     router.back();
   };
   return (
-    <div onClick={handleBackClick} className="left-[21px] top-[15px] absolute">
+    <div onClick={handleBackClick} className="left-[16px] top-[18px] absolute">
       <Image
         src="/icons/chevron-back.png"
         alt="뒤로가기"

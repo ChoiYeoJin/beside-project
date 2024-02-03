@@ -39,12 +39,12 @@ export default function CommunityNewPage() {
           <BackButton />
         </div>
         {!isUploadActive && (
-          <div className="absolute text-[#222222]/30 right-[21px] top-[20px] text-base font-medium tracking-[3%] ">
+          <div className="absolute text-[#222222]/30 right-[21px] top-[20px] text-base font-semibold tracking-[3%] ">
             게시
           </div>
         )}
         {isUploadActive && (
-          <div className="absolute text-[#222222] right-[21px] top-[20px] text-base font-medium tracking-[3%] ">
+          <div className="absolute text-primary right-[21px] top-[20px] text-base font-bold tracking-[3%] ">
             게시
           </div>
         )}

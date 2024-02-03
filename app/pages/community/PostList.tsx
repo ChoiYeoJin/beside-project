@@ -1,4 +1,3 @@
-"use client";
 import CommunityCard from "@/app/components/CommunityCard";
 import { useCommunityStore } from "@/store/CommunityStore";
 import fetchData from "@/utils/fetch";

@@ -14,7 +14,7 @@ export default function Input({
   errorMessage,
 }: InputProps) {
   return (
-    <>
+    <div>
       <input
         type={type}
         value={value}
@@ -23,8 +23,8 @@ export default function Input({
         className=" p-2 rounded w-full h-[50px] focus:border-primary focus:outline-none"
       />
       {errorMessage && (
-        <p className="text-red-500 text-[10px]">{errorMessage}</p>
+        <p className="text-[#FF5C5C] text-[10px] pl-5">{errorMessage}</p>
       )}
-    </>
+    </div>
   );
 }

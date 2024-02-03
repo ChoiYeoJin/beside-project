@@ -10,16 +10,17 @@ import Image from "next/image";
 import Footer from "@/app/components/Footer";
 import CommunityCategory from "../../components/CommunityCategory";
 import PostList from "./PostList";
+import AlarmIcon from "@/app/components/icon/AlarmIcon";
 
 export default function Community() {
   return (
     <div>
       <HeaderContainer>
         <div>
-          <div className="py-[18px] ml-4 font-bold text-xl">질문게시판</div>
+          <div className="py-[18px] ml-4 font-semibold text-xl">질문게시판</div>
         </div>
         <Link href={"../community/new"}>
-          <div className="absolute right-[20px] top-[15px]">
+          <div className="absolute right-[24px] top-[18px]">
             <Image
               src={"/icons/PencilSimpleLine.svg"}
               alt="logo"
@@ -28,9 +29,7 @@ export default function Community() {
             />
           </div>
         </Link>
-        <div className="absolute right-[71px] top-[15px]">
-          <Image src={"/icons/bell.svg"} alt="logo" width={24} height={24} />
-        </div>
+        <AlarmIcon alarmIconType="left" />
       </HeaderContainer>
       <Main>
         <Blank height="30px" />
