@@ -18,7 +18,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* ... other meta tags ... */}
-        <link rel="manifest" href="/manifest.json"></link>
         <meta name="apple-mobile-web-app-capable" content="yes"></meta>
         <meta
           name="apple-mobile-web-app-status-bar-style"
