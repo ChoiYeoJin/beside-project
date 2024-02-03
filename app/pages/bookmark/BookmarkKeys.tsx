@@ -64,7 +64,7 @@ export default function BookmarkKeys() {
   return (
     <>
       <div className="flex justify-center">
-        <Keyboard keys={data ? data[0].keys_list : []} />
+        {data && data[0]?.keys_list && <Keyboard keys={data[0].keys_list} />}
       </div>
       <Blank height="10px" />
       <div className="">

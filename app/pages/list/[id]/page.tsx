@@ -57,7 +57,7 @@ export default function List({ params }: { params: { id: string } }) {
     };
     setSearchResults([]);
     fetchShortcuts();
-  }, [params.id, getShortcuts]);
+  }, [params.id, getShortcuts, getShortcutPopular]);
 
   useEffect(() => {
     if (selectedFilter === "추천") {
@@ -65,7 +65,7 @@ export default function List({ params }: { params: { id: string } }) {
     } else if (selectedFilter === "전체") {
       setSearchResults(data);
     }
-  }, [data, selectedFilter]);
+  }, [data, shortcutPopular, selectedFilter]);
 
   useEffect(() => {
     if (searchTerm.trim()) {
