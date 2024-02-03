@@ -18,11 +18,14 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* ... other meta tags ... */}
-        <link rel="apple-touch-icon" href="/icons/pwa-icons/logo_192x192.png" />
+        <link
+          rel="apple-touch-icon"
+          href="/icons/pwa-icons/splash_screen.png"
+        />
         <link
           rel="apple-touch-startup-image"
-          href="/icons/pwa-icons/splash_2048x2732.png"
-          media="(device-width: 2048px) and (device-height: 2732px) and (-webkit-device-pixel-ratio: 2)"
+          href="/icons/pwa-icons/logo_color_192x192.png"
+          media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
         />
         <meta name="apple-mobile-web-app-capable" content="yes"></meta>
         <meta
