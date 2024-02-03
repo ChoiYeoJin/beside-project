@@ -25,7 +25,7 @@ export default function RootLayout({
         <link
           rel="apple-touch-startup-image"
           href="/icons/pwa-icons/splash_screen.png"
-          media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+          media="(device-width: 320px) and (device-height: 850px) and (-webkit-device-pixel-ratio: 2)"
         />
         <meta name="apple-mobile-web-app-capable" content="yes"></meta>
         <meta
