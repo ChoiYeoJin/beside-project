@@ -36,7 +36,6 @@ export default function Post({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     if (post) {
-      alert(post);
       getPostCommentList(post.id); // async와 await가 필요없습니다.
     }
   }, [post, getPostCommentList]);
