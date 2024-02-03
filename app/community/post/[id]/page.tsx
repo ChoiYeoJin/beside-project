@@ -25,15 +25,18 @@ export default function Post({ params }: { params: { id: string } }) {
   useEffect(() => {
     const fetchPost = async () => {
       await getPostList();
-      const foundPost = postList.find((postItem) => postItem.id === params.id);
+      const foundPost = postList.find(
+        (postItem) => postItem.id.toString() === params.id.toString()
+      );
       setPost(foundPost);
     };
 
     fetchPost();
-  }, [getPostList, postList, params.id]);
+  }, [getPostList, params.id]);
 
   useEffect(() => {
     if (post) {
+      alert(post);
       getPostCommentList(post.id); // async와 await가 필요없습니다.
     }
   }, [post, getPostCommentList]);
