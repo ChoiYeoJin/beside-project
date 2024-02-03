@@ -15,7 +15,7 @@ export default function AlarmCard({
   link,
 }: AlarmCardPropse) {
   return (
-    <Link href={link}>
+    <>
       <div className="relative py-5 pl-4 pr-[60px] flex flex-col gap-[10px] bg-white">
         <div className="font-semibold text-xs text-primary">{category}</div>
         <div className="text-base text-[#222222]">{contents}</div>
@@ -30,6 +30,6 @@ export default function AlarmCard({
         </div>
       </div>
       <div className="border border-gray100 w-full"></div>
-    </Link>
+    </>
   );
 }

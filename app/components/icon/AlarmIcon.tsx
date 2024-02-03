@@ -1,3 +1,4 @@
+"use client";
 import { useUserStore } from "@/store/UserStore";
 import Image from "next/image";
 import Link from "next/link";
