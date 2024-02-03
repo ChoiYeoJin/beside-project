@@ -14,10 +14,13 @@ import {
 } from "@/utils/validate";
 import HeaderContainer from "../components/header/HeaderContainer";
 import BackButton from "../components/Button/BackButton";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
   const [emailError, setEmailError] = useState("");
   const [email, setEmail] = useState("");
+  const router = useRouter();
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     setEmailError(validateEmail(e.target.value));
@@ -45,7 +48,44 @@ export default function Register() {
     setNicknameError(validateNickname(e.target.value));
   };
 
-  const handleLoginButton = async () => {};
+  const handleRegisterButton = async (
+    event?: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event?.preventDefault();
+    if (emailError || passwordError || passwordCheckError || nicknameError) {
+      alert("정보를 정확히 입력해주세요.");
+      return;
+    }
+
+    if (
+      email === "" ||
+      password === "" ||
+      passwordCheck === "" ||
+      nickname === ""
+    ) {
+      alert("정보를 입력해주세요.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        process.env.NEXT_PUBLIC_SERVER_URI + "/accounts",
+        {
+          username: email,
+          password: password,
+          password2: passwordCheck,
+          nickname: nickname,
+        }
+      );
+    } catch (error) {
+      alert(error);
+    }
+
+    const encodedNickname = encodeURIComponent(nickname);
+
+    router.push(`/register/complete/${encodedNickname}`);
+  };
+
   return (
     <>
       <HeaderContainer>
@@ -111,7 +151,7 @@ export default function Register() {
                 <Blank height="40px" />
 
                 <div className="fixed bottom-1 left-0 right-0 px-[16px]">
-                  <TextButton text="회원가입" onClick={handleLoginButton} />
+                  <TextButton text="회원가입" onClick={handleRegisterButton} />
                 </div>
               </form>
               <Blank height="10px" />

@@ -10,7 +10,7 @@ type Shortcut = {
   platform: string;
   keys_list: string[];
   bookmark: boolean;
-  image_url: string;
+  image: string;
 };
 
 type Profile = {

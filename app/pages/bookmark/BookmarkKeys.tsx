@@ -1,3 +1,4 @@
+"use client";
 import MainContainer from "@/app/components/MainContainer";
 import Keyboard from "@/app/components/Keyboard";
 import SearchInput from "@/app/components/ClientSearchInput";
@@ -7,28 +8,63 @@ import RadioContainer from "@/app/components/RadioContainer";
 import Image from "next/image";
 import BookMark from "@/app/components/icon/BookMark";
 
+import useSWR from "swr";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { getShortcutBookmarks } from "@/utils/storage";
+import { useNoneUserStore } from "@/store/NoneUserStore";
+
+async function fetchData() {
+  try {
+    const response = await axios.post(
+      process.env.NEXT_PUBLIC_SERVER_URI + "/shortcut-keys/favorites/",
+      {
+        id_list: getShortcutBookmarks(),
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+    return []; // 에러가 발생했을 때 빈 배열을 반환
+  }
+}
+
 export default function BookmarkKeys() {
-  const data = [
-    {
-      id: "1",
-      desc: "메뉴창 UI 보이기",
-      keys: ["Z", "ctrl"],
-    },
-    {
-      id: "2",
-      desc: "메뉴창 UI 보이기",
-      keys: ["B", "ctrl"],
-    },
-    {
-      id: "3",
-      desc: "메뉴창 UI 보이기",
-      keys: ["C", "ctrl"],
-    },
-  ];
+  const [data, setData] = useState<Shortcut[]>();
+  const programs = useNoneUserStore((state) => state.programs);
+
+  const [selectedProgram, setSelectedProgram] = useState<string>("전체");
+  const [filteredData, setFilteredData] = useState<Shortcut[]>([]);
+
+  const handleProgramSelect = (program: string) => {
+    setSelectedProgram(program);
+    console.log(program);
+  };
+
+  useEffect(() => {
+    const fetchAndSetData = async () => {
+      const fetchedData = await fetchData();
+      setData(fetchedData);
+    };
+
+    fetchAndSetData();
+  }, []);
+
+  useEffect(() => {
+    if (!data) return; // data가 없다면 아무것도 하지 않음
+
+    if (selectedProgram === "전체") {
+      setFilteredData(data);
+    } else {
+      const filtered = data.filter((item) => item.platform === selectedProgram);
+      setFilteredData(filtered);
+    }
+  }, [selectedProgram, data]);
+
   return (
     <>
       <div className="flex justify-center">
-        <Keyboard keys={data ? data[0].keys : []} />
+        <Keyboard keys={data ? data[0].keys_list : []} />
       </div>
       <Blank height="10px" />
       <div className="">
@@ -44,7 +80,8 @@ export default function BookmarkKeys() {
             </div>
           </div>
           <RadioContainer
-            items={["전체", "파일&프로퍼티", "선택", "편집", "프로그램"]}
+            items={["전체", ...programs.map((program) => program.platform)]}
+            setItem={handleProgramSelect}
           />
           <div className="flex items-center">
             <div className="text-[14px] text-gray300 font-semibold w-[50px]  h-[17px] ">
@@ -57,7 +94,7 @@ export default function BookmarkKeys() {
 
         <Blank height="30px" />
         <div>
-          {data.map((item, index) => {
+          {filteredData?.map((item, index) => {
             return (
               <div key={item.id} className="h-[40px] mb-[20px]">
                 <div className="flex justify-between items-center ">
@@ -70,11 +107,11 @@ export default function BookmarkKeys() {
                         id={item.id}
                       />
                     </div>
-                    <p>{item.desc}</p>
+                    <p>{item.description}</p>
                   </div>
                   <div className="flex">
                     <KeyList
-                      keys={item.keys}
+                      keys={item.keys_list}
                       isActive={index === 0 ? true : false}
                     />
                   </div>

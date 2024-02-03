@@ -16,10 +16,13 @@ import Main from "../components/Main";
 import HeaderLeftText from "../components/header/HeaderLeftText";
 import Link from "next/link";
 import Footer from "../components/Footer";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [emailError, setEmailError] = useState("");
   const [email, setEmail] = useState("");
+
+  const router = useRouter();
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     setEmailError(validateEmail(e.target.value));
@@ -32,7 +35,34 @@ export default function Login() {
     setPasswordError(validatePassword(e.target.value));
   };
 
-  const handleLoginButton = async () => {};
+  const handleLoginButton = async (
+    event?: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event?.preventDefault();
+    if (emailError || passwordError) {
+      alert("이메일 및 비밀번호를 정확히 입력해주세요.");
+      return;
+    }
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_SERVER_URI}/accounts/api/token/`,
+        {
+          username: email,
+          password: password,
+        }
+      );
+      alert("check1");
+      if (response.status === 200) {
+        alert("check2");
+        const { access, refresh } = response.data;
+        localStorage.setItem("token", access);
+        router.push("/pages/home");
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <div>
       <HeaderLeftText text="마이페이지" />

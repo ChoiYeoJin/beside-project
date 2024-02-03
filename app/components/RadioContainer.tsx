@@ -15,6 +15,7 @@ export default function RadioContainer({
 
   const handleItemClick = (item: string) => {
     setSelectedItem(item); // 선택된 항목 업데이트
+
     if (setItem) setItem(item);
   };
 

@@ -24,7 +24,7 @@ export default function ProgramCard({ text, imgSrc, id }: ProgramCardPropse) {
               {text}
             </div>
             <div>
-              <Image src={imgSrc} alt="logo" width={36} height={36} />
+              <Image src={imgSrc} alt="logo" width={24} height={24} />
             </div>
           </div>
         </Link>

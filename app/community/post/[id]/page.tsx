@@ -4,6 +4,7 @@ import CommunityCard from "@/app/components/CommunityCard";
 import Header from "@/app/components/header/Header";
 import MainContainer from "@/app/components/MainContainer";
 import { useCommunityStore } from "@/store/CommunityStore";
+import FormatDate from "@/utils/date";
 import { useEffect, useState } from "react";
 
 export default function Post({ params }: { params: { id: string } }) {
@@ -54,7 +55,7 @@ export default function Post({ params }: { params: { id: string } }) {
       {post && (
         <CommentCard
           userName={post.author}
-          createdAt={post.updated_at}
+          createdAt={FormatDate(post.updated_at)}
           imgSrc="/icons/User-30.svg"
           mainText={post.content}
           isMain={true}
@@ -66,7 +67,7 @@ export default function Post({ params }: { params: { id: string } }) {
           <div key={comment.id}>
             <CommentCard
               userName={comment.author}
-              createdAt={comment.created_at}
+              createdAt={FormatDate(comment.created_at)}
               imgSrc="/icons/User-30.svg"
               mainText={comment.content}
               isMain={true}

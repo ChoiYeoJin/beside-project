@@ -2,18 +2,18 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Next.js App",
-    short_name: "Next.js App",
-    description: "Next.js App",
+    name: "키키",
+    short_name: "키키",
+    description: "모아 보는 단축키",
     start_url: "/pages/home",
     display: "standalone",
     background_color: "#33C481",
     theme_color: "#33C481",
     icons: [
       {
-        src: "/icons/pwa-icons/icon-192x192.png",
+        src: "/icons/pwa-icons/logo_192x192.png",
         sizes: "any",
-        type: "image/png",
+        type: "image/svg",
       },
     ],
   };

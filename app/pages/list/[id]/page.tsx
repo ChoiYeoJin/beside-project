@@ -16,7 +16,6 @@ import { SetStateAction, useEffect, useLayoutEffect, useState } from "react";
 import { useNoneUserStore } from "@/store/NoneUserStore";
 import { useRouter } from "next/router";
 import AlarmIcon from "@/app/components/icon/AlarmIcon";
-import fitText from "fittext.js";
 
 const options = {
   includeScore: true,
@@ -26,6 +25,10 @@ const options = {
 export default function List({ params }: { params: { id: string } }) {
   const data = useNoneUserStore((state) => state.shortcuts);
   const getShortcuts = useNoneUserStore((state) => state.getShortcuts);
+  const shortcutPopular = useNoneUserStore((state) => state.shortcutPopular);
+  const getShortcutPopular = useNoneUserStore(
+    (state) => state.getShortcutPopular
+  );
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(data);
@@ -34,11 +37,12 @@ export default function List({ params }: { params: { id: string } }) {
   const [isLoading, setIsLoading] = useState(true);
   const [searchId, setSearchId] = useState("");
 
+  const [selectedFilter, setSelectedFilter] = useState("추천");
+
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // window 객체가 정의되었는지 확인합니다 (클라이언트 측에서 실행 중인지 확인)
       const queryParams = new URLSearchParams(window.location.search);
-      const searchIdValue = queryParams.get("searchId"); // 'searchId' 쿼리 파라미터 값을 가져옵니다.
+      const searchIdValue = queryParams.get("searchId");
 
       setSearchTerm(searchIdValue || "");
     }
@@ -48,6 +52,7 @@ export default function List({ params }: { params: { id: string } }) {
     const fetchShortcuts = async () => {
       setIsLoading(true);
       await getShortcuts(params.id);
+      await getShortcutPopular(params.id);
       setIsLoading(false);
     };
     setSearchResults([]);
@@ -55,20 +60,32 @@ export default function List({ params }: { params: { id: string } }) {
   }, [params.id, getShortcuts]);
 
   useEffect(() => {
-    setSearchResults(data);
-  }, [data]);
+    if (selectedFilter === "추천") {
+      setSearchResults(shortcutPopular);
+    } else if (selectedFilter === "전체") {
+      setSearchResults(data);
+    }
+  }, [data, selectedFilter]);
 
   useEffect(() => {
     if (searchTerm.trim()) {
       const results = fuse.search(searchTerm).map((result) => result.item);
       setSearchResults(results);
     } else {
-      setSearchResults(data);
+      if (selectedFilter === "추천") {
+        setSearchResults(shortcutPopular);
+      } else if (selectedFilter === "전체") {
+        setSearchResults(data);
+      }
     }
   }, [searchTerm, data]);
 
   const handleSearchChange = (value: string) => {
     setSearchTerm(value);
+  };
+
+  const handleFilterChange = (value: string) => {
+    setSelectedFilter(value);
   };
 
   if (isLoading) {
@@ -117,7 +134,10 @@ export default function List({ params }: { params: { id: string } }) {
             placeholder="궁금한 기능을 검색해 보세요."
           />
           <Blank height="40px" />
-          <RadioContainer items={["추천", "전체", "필수"]} />
+          <RadioContainer
+            items={["추천", "전체"]}
+            setItem={handleFilterChange}
+          />
           <Blank height="30px" />
           <div>
             {!isLoading &&

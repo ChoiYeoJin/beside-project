@@ -67,7 +67,7 @@ export default function RankList({ itemType }: RankListProps) {
                 </p>
                 <div className="mr-[10px]">
                   <Image
-                    src={item.image_url}
+                    src={process.env.NEXT_PUBLIC_SERVER_URI + item.image}
                     alt="logo"
                     width={16}
                     height={16}

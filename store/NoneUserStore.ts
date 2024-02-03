@@ -12,6 +12,8 @@ type NoneUserStore = {
   getShortcuts: (id: string) => void;
   search: string;
   setSearch: (search: string) => void;
+  shortcutPopular: Shortcut[];
+  getShortcutPopular: (id: string) => void;
 };
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URI;
@@ -59,5 +61,16 @@ export const useNoneUserStore = create<NoneUserStore>((set, get) => ({
   search: "",
   setSearch: (search: string) => {
     set({ search: search });
+  },
+  shortcutPopular: [],
+  getShortcutPopular: async (id: string) => {
+    try {
+      const response = await axios.get(
+        `${SERVER_URL}/shortcut-keys/rank/?platform=${id}`
+      );
+      set({ shortcutPopular: response.data });
+    } catch (error) {
+      console.error(error);
+    }
   },
 }));

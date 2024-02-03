@@ -1,5 +1,6 @@
 import CommunityCard from "@/app/components/CommunityCard";
 import { useCommunityStore } from "@/store/CommunityStore";
+import FormatDate from "@/utils/date";
 import fetchData from "@/utils/fetch";
 import Link from "next/link";
 
@@ -22,7 +23,7 @@ export default async function PostList() {
           <Link href={`../community/post/${post.id}`}>
             <CommunityCard
               userName={post.author}
-              createdAt={post.updated_at}
+              createdAt={FormatDate(post.updated_at)}
               imgSrc="/icons/User-30.svg"
               mainText={post.content}
               isMain={true}

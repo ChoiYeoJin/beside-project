@@ -6,6 +6,7 @@ import ModalController from "../../components/modal/ModalController";
 import Blank from "@/app/components/Blank";
 import Main from "@/app/components/Main";
 import HeaderLeftText from "@/app/components/header/HeaderLeftText";
+import { useRouter } from "next/navigation";
 
 export default function MyPage() {
   return (
