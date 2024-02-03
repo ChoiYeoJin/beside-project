@@ -42,7 +42,7 @@ export default function Bookmark() {
         {selectedItem === "프로그램" && (
           <>
             <Blank height="30px" />
-            <ProgramList items={programs} />
+            <ProgramList items={programs} isAll={false} />
           </>
         )}
         {selectedItem === "단축키" && <BookmarkKeys />}

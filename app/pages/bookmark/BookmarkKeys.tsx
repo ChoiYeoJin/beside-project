@@ -5,6 +5,7 @@ import Blank from "@/app/components/Blank";
 import KeyList from "@/app/components/KeyList";
 import RadioContainer from "@/app/components/RadioContainer";
 import Image from "next/image";
+import BookMark from "@/app/components/icon/BookMark";
 
 export default function BookmarkKeys() {
   const data = [
@@ -62,11 +63,11 @@ export default function BookmarkKeys() {
                 <div className="flex justify-between items-center ">
                   <div key={item.id} className="flex ">
                     <div className="mr-[14px] ml-[4px]">
-                      <Image
-                        src={"/icons/BookmarkSimple.svg"}
-                        alt="logo"
-                        width={24}
-                        height={24}
+                      <BookMark
+                        size={24}
+                        isChecked={index === 0 ? true : false}
+                        bookmarkType="단축키"
+                        id={item.id}
                       />
                     </div>
                     <p>{item.desc}</p>

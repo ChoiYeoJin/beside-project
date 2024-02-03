@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^1.6.7",
     "dotenv": "^16.4.1",
+    "fittext.js": "^1.2.0",
     "fuse.js": "^7.0.0",
     "next": "14.1.0",
     "next-auth": "^4.24.5",

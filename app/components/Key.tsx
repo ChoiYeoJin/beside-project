@@ -12,11 +12,9 @@ export default function Key({ character, isActive, size, width }: KeyProps) {
   const customStyle: React.CSSProperties & {
     "--key-flex-grow": string;
     "--key-width": string;
-    filter: string;
   } = {
     "--key-flex-grow": `${size ?? 1}`,
     "--key-width": width ? `${width}px` : "20px",
-    filter: "drop-shadow(0px 3px 3px rgba(0,0,0,0.05));",
   };
 
   const keyClass = isActive
@@ -27,7 +25,10 @@ export default function Key({ character, isActive, size, width }: KeyProps) {
     <div
       id={character}
       className={`${keyClass} flex-grow min-w-[var(--key-width)] min-h-[20px] mb-[3.5px] font-medium`}
-      style={customStyle}
+      style={{
+        ...customStyle,
+        filter: "drop-shadow(0px 3px 3px rgba(0,0,0,0.05))",
+      }}
     >
       <p className="text-[6px]">{character}</p>
     </div>

@@ -1,25 +1,20 @@
 import Image from "next/image";
 import BookMark from "./icon/BookMark";
 import Link from "next/link";
+import { isProgramBookmarked } from "@/utils/storage";
 
 type ProgramCardPropse = {
   text: string;
   imgSrc: string;
-  checked: boolean;
-  id?: string;
+  id: string;
 };
 
-export default function ProgramCard({
-  text,
-  imgSrc,
-  checked,
-  id,
-}: ProgramCardPropse) {
+export default function ProgramCard({ text, imgSrc, id }: ProgramCardPropse) {
   return (
     <div className="flex justify-between items-center bg-white rounded-[4px] h-[60px] py-[15px] pl-[15px] pr-[10px]">
       <div className="flex items-center">
         <div className="mr-[15px]">
-          <BookMark isChecked={checked} />
+          <BookMark id={id} bookmarkType="프로그램" isChecked={false} />
         </div>
       </div>
       <div className="w-full">

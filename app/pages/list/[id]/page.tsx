@@ -16,6 +16,7 @@ import { SetStateAction, useEffect, useLayoutEffect, useState } from "react";
 import { useNoneUserStore } from "@/store/NoneUserStore";
 import { useRouter } from "next/router";
 import AlarmIcon from "@/app/components/icon/AlarmIcon";
+import fitText from "fittext.js";
 
 const options = {
   includeScore: true,
@@ -38,18 +39,7 @@ export default function List({ params }: { params: { id: string } }) {
       // window 객체가 정의되었는지 확인합니다 (클라이언트 측에서 실행 중인지 확인)
       const queryParams = new URLSearchParams(window.location.search);
       const searchIdValue = queryParams.get("searchId"); // 'searchId' 쿼리 파라미터 값을 가져옵니다.
-      // if (searchIdValue) {
-      //   setSearchId(searchIdValue);
-      // }
-      // const fetchShortcuts = async () => {
-      //   setIsLoading(true);
-      //   await getShortcuts(params.id);
-      //   setIsLoading(false);
-      // };
-      // //setSearchResults(data?.find((item) => item.id === searchIdValue));
-      // const foundShortcut = data?.find((item) => item.id === searchIdValue);
-      // setSearchResults(foundShortcut ? [foundShortcut] : []);
-      // fetchShortcuts();
+
       setSearchTerm(searchIdValue || "");
     }
   }, []);
@@ -98,7 +88,13 @@ export default function List({ params }: { params: { id: string } }) {
         </div>
 
         <div className="absolute right-[20px] top-[15px]">
-          <BookMark isChecked={true} size={30} isBlack={true} />
+          <BookMark
+            isChecked={true}
+            size={30}
+            isBlack={true}
+            bookmarkType="프로그램"
+            id={params.id}
+          />
         </div>
 
         <AlarmIcon alarmIconType="left" />
@@ -116,7 +112,10 @@ export default function List({ params }: { params: { id: string } }) {
         </div>
         <Blank height="10px" />
         <div className="">
-          <SearchInput onChange={handleSearchChange} />
+          <SearchInput
+            onChange={handleSearchChange}
+            placeholder="궁금한 기능을 검색해 보세요."
+          />
           <Blank height="40px" />
           <RadioContainer items={["추천", "전체", "필수"]} />
           <Blank height="30px" />
@@ -131,6 +130,8 @@ export default function List({ params }: { params: { id: string } }) {
                           <BookMark
                             size={24}
                             isChecked={index === 0 ? true : false}
+                            bookmarkType="단축키"
+                            id={item.id}
                           />
                         </div>
                         <p>{item.description}</p>

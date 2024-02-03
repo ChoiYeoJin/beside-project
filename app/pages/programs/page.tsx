@@ -24,7 +24,7 @@ export default async function Programs() {
           <RadioContainer items={["전체", "문서", "Adobe", "협업", "기타"]} />
         </div>
         <Blank height="20px" />
-        <ProgramList items={data} />
+        <ProgramList items={data} isAll={true} />
       </Main>
     </>
   );

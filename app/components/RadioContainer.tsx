@@ -34,9 +34,7 @@ export default function RadioContainer({
               }`}
               onClick={() => handleItemClick(item)}
             >
-              <div className="my-[8px] mx-[14px] text-[14px] font-semibold">
-                {item}
-              </div>
+              <div className="my-[8px] mx-[14px] text-[14px]">{item}</div>
             </div>
           );
         } else {

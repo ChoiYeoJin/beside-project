@@ -1,4 +1,5 @@
 // pages/index.tsx
+
 import axios from "axios";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
@@ -11,6 +12,7 @@ import Link from "next/link";
 import ClientSearchInput from "../../components/ClientSearchInput";
 import Rankings from "./Rankings";
 import HomeSearchInput from "@/app/components/HomeSearchInput";
+import BookmarkList from "./BookmarkList";
 
 export default function Home() {
   // 여기에서 props로 받은 데이터를 사용하여 페이지를 렌더링합니다.
@@ -23,16 +25,7 @@ export default function Home() {
         <Blank height="40px" />
         <Title text="내 즐겨찾기" />
         <Blank height="20px" />
-        <div className={`grid gap-[11px] grid-cols-3`}>
-          <Link href={"/pages/list/figma"}>
-            <Card height="60px" imgSrc="/icons/cat.png" />
-          </Link>
-          <Link href={"/pages/bookmark"}>
-            <div className="flex items-center justify-center h-[60px] rounded-md font-semibold text-base text-gray300 bg-gray100">
-              더보기
-            </div>
-          </Link>
-        </div>
+        <BookmarkList />
         <Blank height="40px" />
         <Title text="실시간 인기 순위" />
         <Blank height="20px" />
