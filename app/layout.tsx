@@ -22,10 +22,21 @@ export default function RootLayout({
           rel="apple-touch-icon"
           href="/icons/pwa-icons/logo_color_192x192.png"
         />
+
         <link
           rel="apple-touch-startup-image"
-          href="/icons/pwa-icons/splash_screen.png"
-          media="(device-width: 320px) and (device-height: 850px) and (-webkit-device-pixel-ratio: 2)"
+          href="/icons/pwa-icons/logo_color_192x192.png"
+          media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+        />
+        <link
+          rel="apple-touch-startup-image"
+          href="/icons/pwa-icons/logo_color_192x192.png"
+          media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+        />
+        <link
+          rel="apple-touch-startup-image"
+          href="/icons/pwa-icons/logo_color_192x192.png"
+          media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
         />
         <meta name="apple-mobile-web-app-capable" content="yes"></meta>
         <meta
