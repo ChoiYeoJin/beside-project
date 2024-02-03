@@ -25,7 +25,7 @@ export default function Bookmark() {
     };
 
     fetchShortcuts();
-  }, [getPrograms, programs]);
+  }, [getPrograms]);
 
   return (
     <>

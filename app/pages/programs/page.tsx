@@ -1,11 +1,7 @@
 // pages/index.tsx
 import React from "react";
-import MainContainer from "../../components/MainContainer";
 import Blank from "../../components/Blank";
 import Title from "../../components/Title";
-import Card from "../../components/Card";
-import HorizontalSlide from "../../components/HorizontalSlide";
-import Tag from "../../components/Tag";
 import RadioContainer from "../../components/RadioContainer";
 import ProgramList from "../../components/ProgramList";
 import Main from "../../components/Main";

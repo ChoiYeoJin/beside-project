@@ -38,3 +38,12 @@ const addShortcutBookmark = (id: string) => {
     bookmarks.push(id);
   }
 };
+
+export {
+  loginUser,
+  logoutUser,
+  isUserLoggedIn,
+  addProgramBookmark,
+  isProgramBookmarked,
+  addShortcutBookmark,
+};
