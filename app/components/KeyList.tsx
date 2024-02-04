@@ -15,7 +15,7 @@ export default function KeyList({ keys, isActive }: KeyListProps) {
           key={index}
           className={keyStyle}
           style={{
-            fontSize: "clamp(12px, 2.5vw, 20px)", // 글자 크기를 동적으로 조정
+            fontSize: "clamp(12px, 2.5vw, 15px)", // 글자 크기를 동적으로 조정
           }}
         >
           {key}
