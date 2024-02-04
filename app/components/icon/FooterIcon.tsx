@@ -22,7 +22,13 @@ export default function FooterIcon({
       onClick={() => onClick(tabName)}
     >
       <Link href={`/pages/${tabName}`}>
-        <Image src={imgSrc} alt={tabName} width={28} height={28} />
+        <Image
+          src={imgSrc}
+          alt={tabName}
+          width={28}
+          height={28}
+          layout="fixed"
+        />
       </Link>
       <div
         style={

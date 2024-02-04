@@ -49,9 +49,9 @@ export default function Footer({ selected }: { selected?: string }) {
     <>
       <div className="h-[82px] w-full"></div>
       <div className="fixed bottom-0 w-full h-[82px] bg-white pt-[8px]">
-        <div className="flex justify-around">
+        <div className="flex ">
           {Object.entries(tabImages).map(([tabName, images]) => (
-            <div key={tabName}>
+            <div key={tabName} className="w-[20%] h-full">
               <FooterIcon
                 tabName={tabName}
                 imgSrc={activeTab === tabName ? images.active : images.default}
