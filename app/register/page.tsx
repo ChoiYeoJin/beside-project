@@ -73,17 +73,19 @@ export default function Register() {
         {
           username: email,
           password: password,
-          password2: passwordCheck,
+          second_password: passwordCheck,
           nickname: nickname,
         }
       );
+
+      if (response.status === 200) {
+        const encodedNickname = encodeURIComponent(nickname);
+
+        router.push(`/register/complete/${encodedNickname}`);
+      }
     } catch (error) {
       alert(error);
     }
-
-    const encodedNickname = encodeURIComponent(nickname);
-
-    router.push(`/register/complete/${encodedNickname}`);
   };
 
   return (

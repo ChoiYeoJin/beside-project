@@ -4,7 +4,7 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "키키",
   description: "모아 보는 단축키",
 };
@@ -18,6 +18,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* ... other meta tags ... */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+
         <link
           rel="apple-touch-icon"
           href="/icons/pwa-icons/logo_color_192x192.png"
