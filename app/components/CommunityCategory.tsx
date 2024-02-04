@@ -11,15 +11,13 @@ export default function CommunityCategory() {
           카테고리
         </div>
       </div>
-      <RadioContainer
-        items={["추천", "전체", "필수", "프로그램", "프로그램", "프로그램"]}
-      />
+      <RadioContainer items={["추천", "전체", "필수"]} />
       <div className="flex items-center">
         <div className="text-[14px] text-gray300 font-semibold w-[50px]  h-[17px]  mr-[20px] tracking-[1%]">
           프로그램
         </div>
       </div>
-      <RadioContainer items={["추천", "전체", "필수"]} />
+      <RadioContainer items={["피그마", "excel"]} />
     </div>
   );
 }
