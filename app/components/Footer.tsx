@@ -2,6 +2,7 @@
 import { useFooterStore } from "@/store/FooterStore";
 import { useEffect } from "react";
 import FooterIcon from "./icon/FooterIcon";
+import Link from "next/link";
 
 export default function Footer({ selected }: { selected?: string }) {
   const activeTab = useFooterStore((state) => state.activeTab);
@@ -52,13 +53,17 @@ export default function Footer({ selected }: { selected?: string }) {
         <div className="flex ">
           {Object.entries(tabImages).map(([tabName, images]) => (
             <div key={tabName} className="w-[20%] h-full">
-              <FooterIcon
-                tabName={tabName}
-                imgSrc={activeTab === tabName ? images.active : images.default}
-                name={images.name}
-                onClick={handleTabClick}
-                checked={activeTab === tabName}
-              />
+              <Link href={`/pages/${tabName}`}>
+                <FooterIcon
+                  tabName={tabName}
+                  imgSrc={
+                    activeTab === tabName ? images.active : images.default
+                  }
+                  name={images.name}
+                  onClick={handleTabClick}
+                  checked={activeTab === tabName}
+                />
+              </Link>
             </div>
           ))}
         </div>

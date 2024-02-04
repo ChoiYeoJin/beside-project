@@ -21,15 +21,8 @@ export default function FooterIcon({
       className="flex flex-col items-center"
       onClick={() => onClick(tabName)}
     >
-      <Link href={`/pages/${tabName}`}>
-        <Image
-          src={imgSrc}
-          alt={tabName}
-          width={28}
-          height={28}
-          layout="fixed"
-        />
-      </Link>
+      <Image src={imgSrc} alt={tabName} width={28} height={28} layout="fixed" />
+
       <div
         style={
           checked
