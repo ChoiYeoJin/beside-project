@@ -20,7 +20,7 @@ export default function CommunityCard({
     <>
       {isMain && (
         <div>
-          <div className="bg-opacity-100 border-b border-gray100 px-4">
+          <div className="bg-white border-b border-gray100 px-4">
             <div className="flex items-center gap-[10px] pt-5">
               <div className="w-[30px] h-[30px] rounded-full overflow-hidden">
                 <Image src={imgSrc} alt={"profile"} width={30} height={30} />
