@@ -5,7 +5,7 @@ type CommunityCardProps = {
   userName: string;
   imgSrc: string;
   createdAt: string;
-  mainText: string;
+  mainText: string;-
   isMain: boolean;
 };
 
