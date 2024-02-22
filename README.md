@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 키키(keykey)
+항상 봐도 봐도 까먹는 단축키들, 사용하기 편한 단축키들, 단축키 검색 한 번에 모아볼 수는 없을까?
+모두 키키에서 해결하자!
 
-## Getting Started
+### 서비스 소개
+웹과 앱을 통해 단축키를 검색하고, 자주 찾는 단축키는 즐겨찾기하고, 많이 쓰는 툴이나 단축키들을 확인할 수 있는 서비스입니다.
 
-First, run the development server:
+### 기획 의도, 목적
+- 업무를 빠르고 효율적으로 하기 위해 단축키는 꼭 필요한 존재이지만 종류가 많고 프로그램마다 다르기 때문에 모든 단축키를 알고 있기란 어려운 일입니다. 때문에 이를 편하게 해결할 수 있는 단축키 정보를 제공하는 서비스를 만들게 되었습니다.
+- 키키를 통해 많이 사용되는 툴, 단축키 등을 확인할 수 있고, 단축키를 검색해볼 수 있습니다. 또한 자주 찾는 단축키의 경우 즐겨찾기를 통해 한 눈에 볼 수 있도록 정리되어 있습니다.
 
-```bash
+### 페르소나
+- 20대, 30대, 40대 직장인
+
+### 프로젝트 설치 방법
+프로젝트를 클론합니다.
+```
+git clone https://github.com/kiki-team-project/kiki-frontend.git
+```
+터미널에서 아래 명령어를 통해 필요한 모듈들을 설치합니다.
+```
+npm install
+```
+터미널에서 아래 명령어를 통해 프로젝트를 실행합니다.
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 프로젝트 사용 방법
+[여기](https://keykey.vercel.app/pages/home)를 눌러 서비스 페이지로 이동해주세요.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 기술 스택
+**Front-End**     Typescript, HTML/CSS, TailwindCSS
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Framework**   Next.js 14.1.0, React 18.2.48
 
-## Learn More
+**Back-End**      Node.js
 
-To learn more about Next.js, take a look at the following resources:
+**Database**      SQL Lite
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**DevOps**        Nginx, Vercel, Naver Cloud
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+
+
+
+
+
+
+
+
