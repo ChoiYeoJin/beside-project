@@ -1,7 +1,5 @@
 ## 목차
 - [서비스 소개](#서비스-소개)
-- [기획 의도, 목적](#기획-의도-목적)
-- [페르소나](#페르소나)
 - [프로젝트 설치 방법](#프로젝트-설치-방법)
 - [프로젝트 사용 방법](#프로젝트-사용-방법)
 - [기술 스택](#기술-스택)
@@ -26,7 +24,7 @@
 ### 페르소나
 - 20대, 30대, 40대 프로그램이나 툴을 사용하는데 단축키를 자주 검색하는 직장인
 
-### 프로젝트 설치 방법
+## 프로젝트 설치 방법
 프로젝트를 클론합니다.
 ```
 git clone https://github.com/kiki-team-project/kiki-frontend.git
@@ -40,10 +38,10 @@ npm install
 npm run dev
 ```
 
-### 프로젝트 사용 방법
+## 프로젝트 사용 방법
 [여기](https://keykey.vercel.app/pages/home)를 눌러 서비스 페이지로 이동해주세요.
 
-### 기술 스택
+## 기술 스택
 **Front-End**     Typescript, HTML/CSS, TailwindCSS
 
 **Framework**   Next.js 14.1.0, React 18.2.48
@@ -54,11 +52,11 @@ npm run dev
 
 **DevOps**        Nginx, Vercel, Naver Cloud
 
-### 문서
+## 문서
 1. [Figma](https://www.figma.com/file/xhJD9VDPGAQRKXmscw68jd/%ED%82%A4%ED%82%A4-(Copy)?type=design&node-id=0%3A1&mode=design&t=b4ogcKtDWDzQO7b9-1)
 2. [API 명세서](https://picayune-candle-297.notion.site/BE-023519ac104b4e9d88790d7f7a738552?pvs=4)
 
-### 웹 서비스 기능 설명
+## 웹 서비스 기능 설명
 #### 주제
 단축키 정보를 검색하고 즐겨찾기 해둘 수 있는 서비스
 #### 메인 기능
@@ -92,11 +90,11 @@ npm run dev
 ![KakaoTalk_20240215_201619836](https://github.com/kiki-team-project/kiki-frontend/assets/17807025/449d7850-dae5-4575-9dd1-abb441c26c29)
 
 
-### 문제 해결
+## 문제 해결
 - [검색엔진 사용](https://velog.io/@sonata7531/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%EC%97%90%EC%84%9C-%EA%B2%80%EC%83%89-%EC%97%94%EC%A7%84%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%90)
 - [layout 사용](https://velog.io/@sonata7531/Next.js-14%EB%B2%84%EC%A0%84-layout%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EC%9E%90)
 
-### 팀원 소개 및 역할
+## 팀원 소개 및 역할
 | 이름 | 역할 | 담당 부분 |
 |------|------|-----------|
 |   권현진   |  기획, 팀장    |     MVP, Flow Chart 문서 제작       |
@@ -106,7 +104,7 @@ npm run dev
 |   최여진(본인)   |   프론트엔드   |      프론트엔드 전반     |
 
 
-### 추가 예정
+## 추가 예정
 - 질문 게시판 : 단축키에 대한 정보와 질문을 공유할 수 있는 게시판 기능 개발 도중
 
 
