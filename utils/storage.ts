@@ -8,10 +8,7 @@ function logoutUser() {
 }
 
 function isUserLoggedIn() {
-  // 'token' 항목을 localStorage에서 가져옵니다.
   const token = localStorage.getItem("token");
-
-  // 'token'이 존재하면 true, 그렇지 않으면 false를 반환합니다.
   return token !== null;
 }
 
