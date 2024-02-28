@@ -1,8 +1,6 @@
 "use client";
 import CommentCard from "@/app/components/CommentCard";
-import CommunityCard from "@/app/components/CommunityCard";
 import Header from "@/app/components/header/Header";
-import MainContainer from "@/app/components/MainContainer";
 import { useCommunityStore } from "@/store/CommunityStore";
 import FormatDate from "@/utils/date";
 import { useEffect, useState } from "react";

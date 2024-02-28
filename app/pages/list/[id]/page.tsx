@@ -39,6 +39,9 @@ export default function List({ params }: { params: { id: string } }) {
 
   const [selectedFilter, setSelectedFilter] = useState("추천");
 
+  const [activeKeyId, setActiveKeyId] = useState<string | null>(null);
+  const [activeKeyList, setActiveKeyList] = useState<string[]>([]);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const queryParams = new URLSearchParams(window.location.search);
@@ -62,8 +65,10 @@ export default function List({ params }: { params: { id: string } }) {
   useEffect(() => {
     if (selectedFilter === "추천") {
       setSearchResults(shortcutPopular);
+      setActiveKeyId(shortcutPopular[0]?.id);
     } else if (selectedFilter === "전체") {
       setSearchResults(data);
+      setActiveKeyId(data[0]?.id);
     }
   }, [data, shortcutPopular, selectedFilter]);
 
@@ -71,11 +76,14 @@ export default function List({ params }: { params: { id: string } }) {
     if (searchTerm.trim()) {
       const results = fuse.search(searchTerm).map((result) => result.item);
       setSearchResults(results);
+      setActiveKeyId(results[0]?.id);
     } else {
       if (selectedFilter === "추천") {
         setSearchResults(shortcutPopular);
+        setActiveKeyId(shortcutPopular[0]?.id);
       } else if (selectedFilter === "전체") {
         setSearchResults(data);
+        setActiveKeyId(data[0]?.id);
       }
     }
   }, [searchTerm, data]);
@@ -121,9 +129,7 @@ export default function List({ params }: { params: { id: string } }) {
         <div className="flex justify-center">
           <Keyboard
             keys={
-              searchResults && searchResults.length > 0
-                ? searchResults[0].keys_list
-                : []
+              searchResults && searchResults.length > 0 ? activeKeyList : []
             }
           />
         </div>
@@ -143,7 +149,14 @@ export default function List({ params }: { params: { id: string } }) {
             {!isLoading &&
               searchResults?.map((item, index) => {
                 return (
-                  <div key={item.id} className="h-[40px] mb-[20px]">
+                  <div
+                    onClick={() => {
+                      setActiveKeyId(item.id);
+                      setActiveKeyList(item.keys_list);
+                    }}
+                    key={item.id}
+                    className="h-[40px] mb-[20px] "
+                  >
                     <div className="flex justify-between items-center ">
                       <div key={item.id} className="flex ">
                         <div className="mr-[14px] ml-[4px]">
@@ -159,7 +172,7 @@ export default function List({ params }: { params: { id: string } }) {
                       <div className="flex">
                         <KeyList
                           keys={item.keys_list}
-                          isActive={index === 0 ? true : false}
+                          isActive={activeKeyId === item.id}
                         />
                       </div>
                     </div>

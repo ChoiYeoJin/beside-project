@@ -7,8 +7,15 @@ import Blank from "@/app/components/Blank";
 import Main from "@/app/components/Main";
 import HeaderLeftText from "@/app/components/header/HeaderLeftText";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { isUserLoggedIn } from "@/utils/storage";
 
 export default function MyPage() {
+  const handleNicknameEditButton = () => {
+    router.push("/pages/myPage/editName");
+  };
+  const router = useRouter();
+
   return (
     <>
       <HeaderLeftText text="마이페이지" />
@@ -23,8 +30,19 @@ export default function MyPage() {
               height={50}
             />
           </div>
-          <div>
-            <div className="font-bold text-xl text-[#222222]">닉네임</div>
+
+          <div className="w-full">
+            <div className="flex items-center justify-between">
+              <div className="font-bold text-xl text-[#222222]">닉네임</div>
+              <div className="mr-[25px]" onClick={handleNicknameEditButton}>
+                <Image
+                  src={"/icons/NotePencil.svg"}
+                  alt="logo"
+                  width={20}
+                  height={20}
+                />
+              </div>
+            </div>
             <div className="text-sm text-gray300 ">asdf21@asdf.com</div>
           </div>
         </div>
@@ -45,17 +63,52 @@ export default function MyPage() {
         <div className="w-full border border-gray100"></div>
         <Blank height="10px" />
         <div className="flex flex-col gap-[60px] py-5">
-          <div className="">
+          <div className="flex justify-between">
             <p>내가 작성한 글</p>
+            <div>
+              <Image
+                src={"/icons/CaretRight.svg"}
+                alt="logo"
+                width={16}
+                height={16}
+              />
+            </div>
           </div>
-          <div>
+          <div className="flex justify-between">
             <p>비밀번호 변경</p>
+            <Image
+              src={"/icons/CaretRight.svg"}
+              alt="logo"
+              width={16}
+              height={16}
+            />
           </div>
-          <div>
+          <div className="flex justify-between">
             <p>이용 약관</p>
+            <Image
+              src={"/icons/CaretRight.svg"}
+              alt="logo"
+              width={16}
+              height={16}
+            />
           </div>
-          <div>
+          <div className="flex justify-between">
             <p>공지사항</p>
+            <Image
+              src={"/icons/CaretRight.svg"}
+              alt="logo"
+              width={16}
+              height={16}
+            />
+          </div>
+          <div className="flex justify-between">
+            <p>회원탈퇴</p>
+            <Image
+              src={"/icons/CaretRight.svg"}
+              alt="logo"
+              width={16}
+              height={16}
+            />
           </div>
         </div>
         <ModalController />
