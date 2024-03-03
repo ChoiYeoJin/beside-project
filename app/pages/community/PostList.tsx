@@ -10,15 +10,12 @@ async function getPosts() {
   return posts;
 }
 
-// 서버 컴포넌트를 정의합니다.
 export default async function PostList() {
-  // 데이터를 가져옵니다.
-  const postList = await getPosts();
+  //const postList = await getPosts();
 
-  // 가져온 데이터를 기반으로 UI를 렌더링합니다.
   return (
     <>
-      {postList.map((post) => (
+      {/* {postList.map((post) => (
         <div key={post.id}>
           <Link href={`../community/post/${post.id}`}>
             <CommunityCard
@@ -30,7 +27,7 @@ export default async function PostList() {
             />
           </Link>
         </div>
-      ))}
+      ))} */}
     </>
   );
 }
