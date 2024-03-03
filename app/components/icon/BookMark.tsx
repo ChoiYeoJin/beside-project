@@ -9,6 +9,7 @@ import {
   removeProgramBookmark,
   removeShortcutBookmark,
 } from "@/utils/storage";
+import { useUserStore } from "@/store/UserStore";
 
 type BookmarkType = "프로그램" | "단축키";
 
@@ -19,6 +20,7 @@ type BookMarkProps = {
   onClick?: () => void;
   bookmarkType: BookmarkType;
   id: string;
+  platform?: string;
 };
 
 function checkBookmarked(id: string, bookmarkType: BookmarkType): boolean {
@@ -38,9 +40,14 @@ export default function BookMark({
   onClick,
   bookmarkType,
   id,
+  platform,
 }: BookMarkProps) {
   // isBookmarked 상태를 false로 초기화
+
   const [isBookmarked, setIsBookmarked] = useState(isChecked);
+  const updateBookmarkShortcuts = useUserStore(
+    (state) => state.updateBookmarkShortcuts
+  );
 
   useEffect(() => {
     setIsBookmarked(checkBookmarked(id, bookmarkType));
@@ -57,6 +64,7 @@ export default function BookMark({
       }
       if (bookmarkType === "단축키") {
         addShortcutBookmark(id);
+        updateBookmarkShortcuts(platform ?? "figma", id);
       }
     } else {
       if (bookmarkType === "프로그램") {

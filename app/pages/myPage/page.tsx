@@ -8,13 +8,25 @@ import Main from "@/app/components/Main";
 import HeaderLeftText from "@/app/components/header/HeaderLeftText";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { isUserLoggedIn } from "@/utils/storage";
+import { isUserLoggedIn, logoutUser } from "@/utils/storage";
+import { useUserStore } from "@/store/UserStore";
 
 export default function MyPage() {
   const handleNicknameEditButton = () => {
     router.push("/pages/myPage/editName");
   };
   const router = useRouter();
+
+  const getUserProfile = useUserStore((state) => state.getUserProfile);
+  const userProfile = useUserStore((state) => state.userProfile);
+  useEffect(() => {
+    getUserProfile();
+  }, []);
+
+  const handleLogout = () => {
+    logoutUser();
+    router.push("/pages/home");
+  };
 
   return (
     <>
@@ -33,7 +45,9 @@ export default function MyPage() {
 
           <div className="w-full">
             <div className="flex items-center justify-between">
-              <div className="font-bold text-xl text-[#222222]">닉네임</div>
+              <div className="font-bold text-xl text-[#222222]">
+                {userProfile.username}
+              </div>
               <div className="mr-[25px]" onClick={handleNicknameEditButton}>
                 <Image
                   src={"/icons/NotePencil.svg"}
@@ -43,10 +57,16 @@ export default function MyPage() {
                 />
               </div>
             </div>
-            <div className="text-sm text-gray300 ">asdf21@asdf.com</div>
+            <div className="text-sm text-gray300 ">{userProfile.username}</div>
+            <div
+              onClick={handleLogout}
+              className="text-primary text-sm cursor-pointer"
+            >
+              로그아웃
+            </div>
           </div>
         </div>
-        <div className="flex justify-around">
+        {/* <div className="flex justify-around">
           <div className="flex flex-col items-center justify-center py-6 gap-[10px]">
             <div className="text-primary text-xl font-bold">23</div>
             <div className="text-gray300 text-xs font-medium">작성한 글</div>
@@ -59,7 +79,7 @@ export default function MyPage() {
             <div className="text-primary text-xl font-bold">23</div>
             <div className="text-gray300 text-xs font-medium">좋아요</div>
           </div>
-        </div>
+        </div> */}
         <div className="w-full border border-gray100"></div>
         <Blank height="10px" />
         <div className="flex flex-col gap-[60px] py-5">

@@ -51,9 +51,8 @@ export default function Login() {
           password: password,
         }
       );
-      alert("check1");
+
       if (response.status === 200) {
-        alert("check2");
         const { access, refresh } = response.data;
         localStorage.setItem("token", access);
         router.push("/pages/home");

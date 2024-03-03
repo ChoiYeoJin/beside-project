@@ -69,7 +69,7 @@ export default function Register() {
 
     try {
       const response = await axios.post(
-        process.env.NEXT_PUBLIC_SERVER_URI + "/accounts",
+        process.env.NEXT_PUBLIC_SERVER_URI + "/accounts/",
         {
           username: email,
           password: password,
@@ -78,7 +78,7 @@ export default function Register() {
         }
       );
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         const encodedNickname = encodeURIComponent(nickname);
 
         router.push(`/register/complete/${encodedNickname}`);

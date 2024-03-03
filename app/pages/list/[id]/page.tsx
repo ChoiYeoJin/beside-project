@@ -155,7 +155,7 @@ export default function List({ params }: { params: { id: string } }) {
                       setActiveKeyList(item.keys_list);
                     }}
                     key={item.id}
-                    className="h-[40px] mb-[20px] "
+                    className="h-[60px] py-[10px] hover:bg-gray100 transition duration-300 ease-in-out"
                   >
                     <div className="flex justify-between items-center ">
                       <div key={item.id} className="flex ">
@@ -169,7 +169,7 @@ export default function List({ params }: { params: { id: string } }) {
                         </div>
                         <p>{item.description}</p>
                       </div>
-                      <div className="flex">
+                      <div className="flex mx-[4px]">
                         <KeyList
                           keys={item.keys_list}
                           isActive={activeKeyId === item.id}

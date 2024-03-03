@@ -15,7 +15,7 @@ type Shortcut = {
 
 type Profile = {
   nickname?: string;
-  email?: string;
+  username?: string;
   postCount?: number;
   commentCount?: number;
   likeCount?: number;
