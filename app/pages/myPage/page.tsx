@@ -8,7 +8,7 @@ import Main from "@/app/components/Main";
 import HeaderLeftText from "@/app/components/header/HeaderLeftText";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { isUserLoggedIn } from "@/utils/storage";
+import { isUserLoggedIn, logoutUser } from "@/utils/storage";
 import { useUserStore } from "@/store/UserStore";
 
 export default function MyPage() {
@@ -22,6 +22,11 @@ export default function MyPage() {
   useEffect(() => {
     getUserProfile();
   }, []);
+
+  const handleLogout = () => {
+    logoutUser();
+    router.push("/pages/home");
+  };
 
   return (
     <>
@@ -40,7 +45,9 @@ export default function MyPage() {
 
           <div className="w-full">
             <div className="flex items-center justify-between">
-              <div className="font-bold text-xl text-[#222222]">닉네임</div>
+              <div className="font-bold text-xl text-[#222222]">
+                {userProfile.username}
+              </div>
               <div className="mr-[25px]" onClick={handleNicknameEditButton}>
                 <Image
                   src={"/icons/NotePencil.svg"}
@@ -50,7 +57,13 @@ export default function MyPage() {
                 />
               </div>
             </div>
-            <div className="text-sm text-gray300 ">asdf21@asdf.com</div>
+            <div className="text-sm text-gray300 ">{userProfile.username}</div>
+            <div
+              onClick={handleLogout}
+              className="text-primary text-sm cursor-pointer"
+            >
+              로그아웃
+            </div>
           </div>
         </div>
         {/* <div className="flex justify-around">

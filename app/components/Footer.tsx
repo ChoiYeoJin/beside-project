@@ -32,11 +32,11 @@ export default function Footer({ selected }: { selected?: string }) {
       default: "/icons/tapbar-icons/BookmarkSimple.svg",
       active: "/icons/tapbar-icons/BookmarkSimpleChecked.svg",
     },
-    community: {
-      name: "질문게시판",
-      default: "/icons/tapbar-icons/ChatsCircle.svg",
-      active: "/icons/tapbar-icons/ChatsCircleChecked.svg",
-    },
+    // community: {
+    //   name: "질문게시판",
+    //   default: "/icons/tapbar-icons/ChatsCircle.svg",
+    //   active: "/icons/tapbar-icons/ChatsCircleChecked.svg",
+    // },
     myPage: {
       name: "마이페이지",
       default: "/icons/tapbar-icons/User.svg",
@@ -52,7 +52,7 @@ export default function Footer({ selected }: { selected?: string }) {
       <div className="fixed bottom-0 w-full h-[82px] bg-white pt-[8px]">
         <div className="flex ">
           {Object.entries(tabImages).map(([tabName, images]) => (
-            <div key={tabName} className="w-[20%] h-full">
+            <div key={tabName} className="w-[25%] h-full">
               <Link href={`/pages/${tabName}`}>
                 <FooterIcon
                   tabName={tabName}

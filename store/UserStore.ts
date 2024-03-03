@@ -9,8 +9,8 @@ type UserState = {
   getBookmarkPrograms: () => void;
   bookmarkShortcuts: Shortcut[];
   getBookmarkShortcuts: () => void;
-  updateBookmarkShortcuts: () => void;
-  updateBookmarkPrograms: () => void;
+  updateBookmarkShortcuts: (platform: string, id: string) => void;
+  updateBookmarkPrograms: (platform: string) => void;
   getUserProfile: () => void;
   userProfile: Profile;
 };
@@ -28,20 +28,46 @@ export const useUserStore = create<UserState>((set, get) => ({
     try {
       const response = await axios.get(`${SERVER_URL}/mypage/token`, {
         headers: {
-          Authorization: `${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
         },
       });
 
-      alert(response.data);
+      const profile = response.data.user;
+
+      set({ userProfile: profile });
     } catch (error) {
       console.error(error);
     }
   },
-  updateBookmarkPrograms: async () => {},
-  updateBookmarkShortcuts: async () => {},
+  updateBookmarkPrograms: async (platform: string) => {
+    try {
+      const response = await axios.post(`${SERVER_URL}/mypage/token`, {
+        headers: {
+          Authorization: `${localStorage.getItem("token")}`,
+        },
+      });
+
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  updateBookmarkShortcuts: async (platform: string, id: string) => {
+    const response = await axios.post(
+      `${SERVER_URL}/shortcut-keys/bookmark/shortcut/?platform=${platform}&shortcut_id=${id}`,
+      {
+        headers: {
+          Authorization: `${localStorage.getItem("token")}`,
+        },
+      }
+    );
+
+    console.log(response.data);
+  },
   userProfile: {
     nickname: "",
-    email: "",
+    username: "",
     postCount: 0,
     commentCount: 0,
     likeCount: 0,
