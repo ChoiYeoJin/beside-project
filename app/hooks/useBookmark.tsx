@@ -3,10 +3,6 @@ import { isUserLoggedIn } from "@/utils/storage";
 import { useEffect, useState } from "react";
 
 export default function useBookmark() {
-  if (!isUserLoggedIn()) {
-    return;
-  }
-
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   const getBookmarkShortcuts = useUserStore(
@@ -22,6 +18,9 @@ export default function useBookmark() {
   const [currPrograms, setCurrPrograms] = useState<string[]>();
 
   const onBookmarkInit = async () => {
+    if (!isUserLoggedIn()) {
+      return;
+    }
     await getBookmarkShortcuts();
     await getBookmarkPrograms();
 
