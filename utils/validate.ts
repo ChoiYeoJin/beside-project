@@ -9,10 +9,11 @@ function validateEmail(email: string): string {
 
 function validatePassword(password: string): string {
   if (!password) {
-    //setPasswordError("비밀번호를 입력해주세요.");
     return "비밀번호를 입력해주세요.";
-  } else if (password.length < 6) {
-    return "비밀번호는 6자 이상이어야 합니다.";
+  } else if (password.length < 8) {
+    return "비밀번호는 8자리 이상, 영문, 숫자, 특수문자를 모두 포함해야 합니다.";
+  } else if (!/(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*])/.test(password)) {
+    return "비밀번호는 8자리 이상, 영문, 숫자, 특수문자를 모두 포함해야 합니다.";
   }
   return "";
 }

@@ -1,40 +1,69 @@
 "use client";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URI;
+
+const fetchCode = async (provider: string, code: string) => {
+  try {
+    const response = await axios.post(
+      `${SERVER_URL}/accounts/oauth/${provider}/`,
+      {
+        code: code,
+      }
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 export default function AuthCallback() {
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    const code = window.location.href;
+    const queryParams = new URLSearchParams(window.location.search);
+    const code = queryParams.get("code");
+    const returnedState = decodeURIComponent(queryParams.get("state") ?? "");
 
     if (!code) {
+      alert("인증에 실패하였습니다.");
+      router.push("/login");
       return;
     }
 
-    const fetchToken = async () => {
-      // try {
-      //   const response = await axios.post(
-      //     "http://your-backend.com/api/authenticate",
-      //     { code }
-      //   );
-      //   const { token, user } = response.data;
-      //   // 토큰을 로컬 스토리지에 저장
-      //   localStorage.setItem("token", token);
-      //   // 사용자 정보를 상태로 저장하거나 context/redux로 관리
-      //   // 인증이 완료되면 메인 페이지로 리디렉션
-      //   router.push("/main");
-      // } catch (error) {
-      //   console.error("Authentication failed:", error);
-      //   setError("Login failed. Please try again.");
-      // }
-    };
+    let provider = "";
+    let csrfToken = "";
 
-    fetchToken();
+    try {
+      const stateObj = JSON.parse(returnedState);
+      provider = stateObj.provider;
+      csrfToken = stateObj.csrfToken;
+    } catch (error) {
+      console.error("Error parsing state:", error);
+      setError("Invalid state parameter. Authentication failed.");
+      return;
+    }
+
+    if (csrfToken === "randomStringForCsrfProtection" && provider !== "") {
+      // CSRF 토큰과 provider가 유효하다면, 인증 코드를 사용하여 서버에 토큰 요청
+      alert(provider);
+      fetchCode(provider, code);
+    } else {
+      // CSRF 검증 실패 또는 provider 불일치
+      setError("CSRF token mismatch or invalid provider.");
+    }
+
+    if (!code) {
+      setError("No code parameter found. Authentication failed.");
+      return;
+    }
   }, []);
 
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  return <div>Authenticating...</div>;
+  return <div>인증중...</div>;
 }

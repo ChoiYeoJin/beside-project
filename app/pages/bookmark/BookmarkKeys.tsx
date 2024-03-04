@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { getShortcutBookmarks } from "@/utils/storage";
 import { useNoneUserStore } from "@/store/NoneUserStore";
+import { useUserStore } from "@/store/UserStore";
 
 async function fetchData() {
   try {
@@ -30,8 +31,9 @@ async function fetchData() {
 }
 
 export default function BookmarkKeys() {
-  const [data, setData] = useState<Shortcut[]>();
-  const programs = useNoneUserStore((state) => state.programs);
+  const bookmarkShortcuts = useUserStore((state) => state.bookmarkShortcuts);
+  const [data, setData] = useState<Shortcut[]>(bookmarkShortcuts);
+  const [programs, setPrograms] = useState<string[]>([]);
 
   const [selectedProgram, setSelectedProgram] = useState<string>("전체");
   const [filteredData, setFilteredData] = useState<Shortcut[]>([]);
@@ -42,13 +44,18 @@ export default function BookmarkKeys() {
   };
 
   useEffect(() => {
-    const fetchAndSetData = async () => {
-      const fetchedData = await fetchData();
-      setData(fetchedData);
-    };
-
-    fetchAndSetData();
-  }, []);
+    const uniquePlatforms = bookmarkShortcuts.reduce(
+      (acc: string[], curr: Shortcut) => {
+        if (!acc.includes(curr.platform)) {
+          acc.push(curr.platform);
+        }
+        return acc; // 누적값을 반환하는 부분
+      },
+      []
+    );
+    console.log(uniquePlatforms);
+    setPrograms(uniquePlatforms);
+  }, [bookmarkShortcuts]);
 
   useEffect(() => {
     if (!data) return; // data가 없다면 아무것도 하지 않음
@@ -82,7 +89,7 @@ export default function BookmarkKeys() {
             </div>
           </div>
           <RadioContainer
-            items={["전체", ...programs.map((program) => program.platform)]}
+            items={["전체", ...programs]}
             setItem={handleProgramSelect}
           />
           <div className="flex items-center">
@@ -107,6 +114,7 @@ export default function BookmarkKeys() {
                         isChecked={index === 0 ? true : false}
                         bookmarkType="단축키"
                         id={item.id}
+                        platform={item.platform}
                       />
                     </div>
                     <p>{item.description}</p>

@@ -1,6 +1,8 @@
 type Program = {
+  id: string;
   platform: string;
   image_url: string;
+  bookmark?: number;
 };
 
 type Shortcut = {
@@ -9,7 +11,7 @@ type Shortcut = {
   category: string;
   platform: string;
   keys_list: string[];
-  bookmark: boolean;
+  bookmark?: number;
   image: string;
 };
 

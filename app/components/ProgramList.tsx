@@ -14,13 +14,14 @@ export default function ProgramList({ items, isAll }: ProgramListProps) {
     <div className="flex flex-col gap-[10px]">
       {!isAll &&
         items.map((item, index) => {
-          if (isProgramBookmarked(item.platform)) {
+          {
             return (
               <ProgramCard
                 key={item.platform}
                 text={item.platform}
                 imgSrc={item.image_url}
-                id={item.platform}
+                id={item.id}
+                platform={item.platform}
               />
             );
           }
@@ -32,7 +33,8 @@ export default function ProgramList({ items, isAll }: ProgramListProps) {
               key={item.platform}
               text={item.platform}
               imgSrc={item.image_url}
-              id={item.platform}
+              id={item.id}
+              platform={item.platform}
             />
           );
         })}
