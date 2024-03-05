@@ -4,7 +4,7 @@ export default function KakaoLogin() {
   const redirectUri = process.env.NEXT_PUBLIC_REDIRECT_URI || "";
 
   const clientId = process.env.NEXT_PUBLIC_KAKAO_JS_KEY;
-  const scope = "account_email";
+  const scope = "profile_nickname,profile_image,account_email";
 
   const stateValue = JSON.stringify({
     provider: "kakao",

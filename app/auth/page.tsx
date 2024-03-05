@@ -7,6 +7,18 @@ const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URI;
 
 const fetchCode = async (provider: string, code: string) => {
   try {
+    let body = null;
+
+    if (provider === "google") {
+      body = {
+        access_token: code,
+      };
+    } else {
+      body = {
+        code: code,
+      };
+    }
+
     const response = await axios.post(
       `${SERVER_URL}/accounts/oauth/${provider}/`,
       {
@@ -48,7 +60,6 @@ export default function AuthCallback() {
 
     if (csrfToken === "randomStringForCsrfProtection" && provider !== "") {
       // CSRF 토큰과 provider가 유효하다면, 인증 코드를 사용하여 서버에 토큰 요청
-      alert(provider);
       fetchCode(provider, code);
     } else {
       // CSRF 검증 실패 또는 provider 불일치

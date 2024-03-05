@@ -4,7 +4,7 @@ export default function GoogleLogin() {
   const redirectUri = process.env.NEXT_PUBLIC_REDIRECT_URI || "";
 
   const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
-  const scope = "email";
+  const scope = "email,name,picture";
 
   const stateValue = JSON.stringify({
     provider: "google",
