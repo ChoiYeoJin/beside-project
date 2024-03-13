@@ -10,7 +10,10 @@ type UserState = {
   bookmarkShortcuts: Shortcut[];
   getBookmarkShortcuts: () => void;
   updateBookmarkShortcuts: (platform: string, id: string) => void;
-  updateBookmarkPrograms: (platform: string) => void;
+  updateBookmarkPrograms: (platform: string, id: string) => void;
+  removeBookmarkShortcuts: (platform: string, id: string) => void;
+  removeBookmarkPrograms: (platform: string, id: string) => void;
+
   getUserProfile: () => void;
   userProfile: Profile;
 };
@@ -18,9 +21,41 @@ type UserState = {
 export const useUserStore = create<UserState>((set, get) => ({
   showAlarm: false,
   bookmarkPrograms: [],
-  getBookmarkPrograms: async () => {},
+  getBookmarkPrograms: async () => {
+    try {
+      const response = await axios.get(
+        `${SERVER_URL}/shortcut-keys/bookmark/program/`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      set({ bookmarkPrograms: [...response.data] });
+    } catch (error) {
+      console.error(error);
+    }
+  },
   bookmarkShortcuts: [],
-  getBookmarkShortcuts: async () => {},
+  getBookmarkShortcuts: async () => {
+    try {
+      const response = await axios.get(
+        `${SERVER_URL}/shortcut-keys/bookmark/shortcut/`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      set({ bookmarkShortcuts: [...response.data] });
+    } catch (error) {
+      console.error(error);
+    }
+  },
   setAlarm: (value: boolean) => {
     set({ showAlarm: value });
   },
@@ -40,30 +75,67 @@ export const useUserStore = create<UserState>((set, get) => ({
       console.error(error);
     }
   },
-  updateBookmarkPrograms: async (platform: string) => {
+  updateBookmarkPrograms: async (platform: string, id: string) => {
     try {
-      const response = await axios.post(`${SERVER_URL}/mypage/token`, {
-        headers: {
-          Authorization: `${localStorage.getItem("token")}`,
-        },
-      });
-
-      console.log(response.data);
+      const response = await axios.post(
+        `${SERVER_URL}/shortcut-keys/bookmark/program/?platform=${platform}&program_id=${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
     } catch (error) {
       console.error(error);
     }
   },
   updateBookmarkShortcuts: async (platform: string, id: string) => {
-    const response = await axios.post(
-      `${SERVER_URL}/shortcut-keys/bookmark/shortcut/?platform=${platform}&shortcut_id=${id}`,
-      {
-        headers: {
-          Authorization: `${localStorage.getItem("token")}`,
-        },
-      }
-    );
-
-    console.log(response.data);
+    try {
+      const response = await axios.post(
+        `${SERVER_URL}/shortcut-keys/bookmark/shortcut/?platform=${platform}&shortcut_id=${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  removeBookmarkPrograms: async (platform: string, id: string) => {
+    try {
+      const response = await axios.delete(
+        `${SERVER_URL}/shortcut-keys/bookmark/program/?platform=${platform}&program_id=${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  removeBookmarkShortcuts: async (platform: string, id: string) => {
+    try {
+      const response = await axios.delete(
+        `${SERVER_URL}/shortcut-keys/bookmark/shortcut/?platform=${platform}&shortcut_id=${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
   },
   userProfile: {
     nickname: "",

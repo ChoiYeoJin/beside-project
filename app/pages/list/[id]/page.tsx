@@ -16,6 +16,9 @@ import { SetStateAction, useEffect, useLayoutEffect, useState } from "react";
 import { useNoneUserStore } from "@/store/NoneUserStore";
 import { useRouter } from "next/router";
 import AlarmIcon from "@/app/components/icon/AlarmIcon";
+import { getShortcutBookmarks, isUserLoggedIn } from "@/utils/storage";
+import { useUserStore } from "@/store/UserStore";
+import useBookmark from "@/app/hooks/useBookmark";
 
 const options = {
   includeScore: true,
@@ -29,6 +32,8 @@ export default function List({ params }: { params: { id: string } }) {
   const getShortcutPopular = useNoneUserStore(
     (state) => state.getShortcutPopular
   );
+
+  const bookmark = useBookmark();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(data);
@@ -56,6 +61,11 @@ export default function List({ params }: { params: { id: string } }) {
       setIsLoading(true);
       await getShortcuts(params.id);
       await getShortcutPopular(params.id);
+
+      if (isUserLoggedIn()) {
+        bookmark?.onBookmarkInit();
+      }
+
       setIsLoading(false);
     };
     setSearchResults([]);
@@ -162,9 +172,10 @@ export default function List({ params }: { params: { id: string } }) {
                         <div className="mr-[14px] ml-[4px]">
                           <BookMark
                             size={24}
-                            isChecked={index === 0 ? true : false}
+                            isChecked={false}
                             bookmarkType="단축키"
                             id={item.id}
+                            platform={params.id}
                           />
                         </div>
                         <p>{item.description}</p>
