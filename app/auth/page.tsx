@@ -100,5 +100,5 @@ export default function AuthCallback() {
     return <div>Error: {error}</div>;
   }
 
-  return <div>인증중...</div>;
+  return <div></div>;
 }
