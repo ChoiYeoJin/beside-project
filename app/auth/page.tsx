@@ -46,7 +46,6 @@ const fetchCode = async (
     const { access, refresh } = response.data;
 
     if (response.status === 200) {
-      alert("aasdf");
       loginUser(access, refresh);
       router.push("/pages/home");
     }
