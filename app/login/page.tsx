@@ -17,6 +17,7 @@ import HeaderLeftText from "../components/header/HeaderLeftText";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import { useRouter } from "next/navigation";
+import { loginUser } from "@/utils/storage";
 
 export default function Login() {
   const [emailError, setEmailError] = useState("");
@@ -54,7 +55,8 @@ export default function Login() {
 
       if (response.status === 200) {
         const { access, refresh } = response.data;
-        localStorage.setItem("token", access);
+        loginUser(access, refresh);
+        //localStorage.setItem("token", access, refresh);
         router.push("/pages/home");
       }
     } catch (error) {
