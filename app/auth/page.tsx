@@ -9,20 +9,22 @@ const fetchCode = async (provider: string, code: string) => {
   try {
     let body = null;
 
-    if (provider === "google") {
-      body = {
-        access_token: code,
-      };
-    } else {
-      body = {
-        code: code,
-      };
-    }
-
+    // if (provider === "google") {
+    //   body = {
+    //     access_token: code,
+    //   };
+    // } else {
+    //   body = {
+    //     code: code,
+    //   };
+    // }
+    body = {
+      code: code,
+    };
     const response = await axios.post(
       `${SERVER_URL}/accounts/oauth/${provider}/`,
       {
-        code: code,
+        access_token: code,
       }
     );
   } catch (error) {

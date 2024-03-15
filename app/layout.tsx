@@ -6,7 +6,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "키키",
-  description: "모아 보는 단축키",
+  description:
+    "모아보는 단축키 '키키'. 내가 사용하는 프로그램의 단축키들을 한 번에 확인하고, 검색하고, 즐겨찾기하세요",
 };
 
 export default function RootLayout({

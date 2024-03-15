@@ -1,5 +1,6 @@
-function loginUser(token: string) {
+function loginUser(token: string, refresh?: string) {
   localStorage.setItem("token", token);
+  localStorage.setItem("refresh", refresh || "");
 }
 
 // 로그아웃 시
