@@ -26,12 +26,12 @@ export default function ClientSearchInput({
         onChange={handleSearch}
         value={search}
       />
-      <div className="absolute right-[16px] -translate-y-9">
+      <div className="absolute right-[30px] -translate-y-1/2 top-1/2">
         <Image
           src="/icons/MagnifyingGlass.svg"
           alt="search"
-          width={24}
-          height={24}
+          width={32}
+          height={32}
         />
       </div>
     </div>

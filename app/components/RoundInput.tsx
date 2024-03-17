@@ -30,7 +30,7 @@ export default function RoundInput({
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        className=" p-2 rounded-lg w-full h-[50px] bg-gray100 text-gray300 px-5  focus:border-primary focus:outline-none"
+        className=" p-2 rounded-[50px] w-full h-[62px] bg-[#F8F8F8] text-[#A5A5A5] px-5  focus:border-primary focus:outline-none"
       />
       {errorMessage && (
         <p className="text-red-500 text-[10px]">{errorMessage}</p>
