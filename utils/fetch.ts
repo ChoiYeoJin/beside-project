@@ -7,7 +7,7 @@ const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URI;
 const fetchData = async <T>(url: string): Promise<T> => {
   try {
     const { data } = await axios.get(SERVER_URL + url);
-    return data;
+    return data as T;
   } catch (error) {
     throw new Error("Unable to fetch data : " + error);
   }

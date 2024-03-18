@@ -2,9 +2,10 @@ import Image from "next/image";
 type CardProps = {
   height: string;
   imgSrc: string;
+  text?: string;
 };
 
-export default function Card({ height, imgSrc }: CardProps) {
+export default function Card({ height, imgSrc, text }: CardProps) {
   return (
     <div
       style={{ height: height }}
