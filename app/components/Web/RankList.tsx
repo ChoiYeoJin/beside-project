@@ -6,16 +6,20 @@ import KeyList from "./KeyList";
 
 type RankListProps = {
   itemType: string;
+  startIndex?: number;
 };
 
-export default async function RankList({ itemType }: RankListProps) {
+export default async function RankList({
+  itemType,
+  startIndex,
+}: RankListProps) {
   const shortcuts = await fetchData<Shortcut[]>(`/shortcut-keys/allrank`);
 
   return (
     <div>
       {shortcuts?.map((item, index) => (
         <Link
-          href={`/pages/list/${item.platform}?searchId=${item.keys_list.join(
+          href={`/kiki/key-list/${item.platform}?searchId=${item.keys_list.join(
             "+"
           )}`}
           key={item.id}
@@ -33,8 +37,13 @@ export default async function RankList({ itemType }: RankListProps) {
                   height={16}
                 />
               </div>
-              <div>
-                <KeyList keys={item.keys_list} isActive={false} />
+              <div className="flex">
+                <KeyList
+                  keys={item.keys_list}
+                  isActive={false}
+                  startIndex={startIndex}
+                />
+                <div className="ml-[10px]">{item.description}</div>
               </div>
             </div>
             <div>
