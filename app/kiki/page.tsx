@@ -28,12 +28,18 @@ export default function Home() {
             </p>
             <p></p>
           </div>
+          <Blank height="20px" />
           <div>
             <RadioContainer items={["피그마", "excel"]} />
           </div>
           <Blank height="30px" />
-          <div className="w-[384px]">
-            <RankList itemType="단축키" />
+          <div className="flex">
+            <div className="w-[384px]">
+              <RankList itemType="단축키" />
+            </div>
+            <div className="w-[384px]">
+              <RankList itemType="단축키" startIndex={5} />
+            </div>
           </div>
         </div>
       </div>
