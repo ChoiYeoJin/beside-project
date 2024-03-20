@@ -95,3 +95,27 @@ div {
   text-align: center;
   font-weight: 500;
 }
+
+.scrollable-div {
+  height: 45vh; /* 스크롤바가 나타날 div의 높이 */
+  overflow-y: auto; /* 수직 방향으로만 스크롤바를 자동으로 표시 */
+  overflow-x: hidden;
+}
+
+/* 스크롤바 트랙(바탕) 스타일링 */
+.scrollable-div::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* 트랙의 배경 색상 */
+  border-radius: 10px; /* 트랙의 모서리 둥글게 */
+}
+
+/* 스크롤바 핸들(움직이는 부분) 스타일링 */
+.scrollable-div::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1; /* 핸들의 배경 색상 */
+  border-radius: 10px; /* 핸들의 모서리 둥글게 */
+}
+
+/* 스크롤바 너비 지정 */
+.scrollable-div::-webkit-scrollbar {
+  width: 5px; /* 수직 스크롤바의 너비 */
+  height: 5px; /* 수평 스크롤바의 높이 */
+}

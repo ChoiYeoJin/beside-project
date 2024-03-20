@@ -7,10 +7,12 @@ import RoundInput from "./RoundInput";
 type ClientSearchInputProps = {
   onChange: (value: string) => void;
   placeholder?: string;
+  color?: string;
 };
 export default function ClientSearchInput({
   onChange,
   placeholder,
+  color,
 }: ClientSearchInputProps) {
   const [search, setSearch] = useState<string>("");
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +27,7 @@ export default function ClientSearchInput({
         placeholder={placeholder ?? "어떤 프로그램을 찾아볼까요?"}
         onChange={handleSearch}
         value={search}
+        color={color}
       />
       <div className="absolute right-[30px] -translate-y-1/2 top-1/2">
         <Image
