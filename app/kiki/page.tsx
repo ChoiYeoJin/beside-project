@@ -1,3 +1,4 @@
+"use client";
 import Blank from "../components/Blank";
 import RoundButton from "../components/Button/RoundButton";
 import Container from "../components/Container";
