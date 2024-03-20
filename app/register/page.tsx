@@ -52,9 +52,13 @@ export default function Register() {
     event?: React.MouseEvent<HTMLButtonElement>
   ) => {
     event?.preventDefault();
-    if (emailError || passwordError || passwordCheckError || nicknameError) {
-      alert("정보를 정확히 입력해주세요.");
+    if (emailError) {
+      alert("이메일이 올바르지 않습니다.");
       return;
+    } else if (passwordError || passwordCheckError) {
+      alert("비밀번호가 올바르지 않습니다.");
+    } else if (nicknameError) {
+      alert("닉네임이 올바르지 않습니다.");
     }
 
     if (
@@ -151,9 +155,17 @@ export default function Register() {
                   />
                 </div>
                 <Blank height="40px" />
-
-                <div className="fixed bottom-1 left-0 right-0 px-[16px]">
-                  <TextButton text="회원가입" onClick={handleRegisterButton} />
+                <div className="flex flex-col items-center w-full">
+                  <div className="fixed bottom-1 left-0 right-0 px-[16px]">
+                    <div className="max-w-[380px] mx-auto w-full">
+                      {" "}
+                      {/* 중앙 정렬을 위한 수정 */}
+                      <TextButton
+                        text="회원가입"
+                        onClick={handleRegisterButton}
+                      />
+                    </div>
+                  </div>
                 </div>
               </form>
               <Blank height="10px" />
