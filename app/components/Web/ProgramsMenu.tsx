@@ -31,21 +31,23 @@ export default function ProgramsMenu() {
   return (
     <div className="flex flex-col  w-full h-full">
       <Blank height="60px" />
-      <div className="flex font-semibold text-base py-[10px] px-5">
+      <div className="flex font-semibold text-base py-[10px] px-5 leading-6">
         프로그램
       </div>
       {programs.map((item) => (
         <Link key={item.platform} href={`/kiki/key-list/${item.platform}`}>
           <div
             key={item.platform}
-            className={`flex items-center py-[11px] px-5 rounded-[8px] ${
+            className={`flex items-center py-[11px] px-5 rounded-[8px] h-[44px] ${
               item.platform === platform ? "bg-[#F8F8F8]" : ""
             }`}
           >
             <div className="mr-[15px]">
               <Image src={item.image_url} alt="logo" width={24} height={24} />
             </div>
-            <div className="text-base font-semibold">{item.platform}</div>
+            <div className="text-base font-semibold leading-6">
+              {item.platform}
+            </div>
           </div>
         </Link>
       ))}

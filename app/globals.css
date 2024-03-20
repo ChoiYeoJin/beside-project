@@ -97,7 +97,7 @@ div {
 }
 
 .scrollable-div {
-  height: 45vh; /* 스크롤바가 나타날 div의 높이 */
+  /* 스크롤바가 나타날 div의 높이 */
   overflow-y: auto; /* 수직 방향으로만 스크롤바를 자동으로 표시 */
   overflow-x: hidden;
 }

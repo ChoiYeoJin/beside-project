@@ -3,9 +3,13 @@
 import Image from "next/image";
 import BoxButton from "../Button/BoxButton";
 import { useRouter } from "next/navigation";
+import { isUserLoggedIn } from "@/utils/storage";
+import { useState } from "react";
 
 export default function WebHeader() {
   const router = useRouter();
+
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(isUserLoggedIn());
 
   const handleLoginButtonClick = () => {
     router.push("/login");

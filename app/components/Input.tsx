@@ -23,7 +23,7 @@ export default function Input({
           value={value}
           placeholder={placeholder}
           onChange={onChange}
-          className=" p-2 rounded w-full h-[50px] focus:border-primary focus:outline-none text-[16px] font-light"
+          className=" p-2 rounded w-full h-[50px] focus:border-primary focus:outline-none text-[16px] font-light bg-[#F8F8F8]"
         />
         {errorMessage && (
           <div className="absolute right-3 top-1/2 -translate-y-1/2">

@@ -91,7 +91,7 @@ export default function Keyboard({ keys }: { keys: string[] }) {
             <Key
               character="enter"
               size={4}
-              isActive={keys.includes("enter")}
+              isActive={keys.includes("Enter")}
               fontSize={6.7}
               textPosition={"right"}
             />
@@ -102,7 +102,7 @@ export default function Keyboard({ keys }: { keys: string[] }) {
               character="shift"
               size={3}
               width={55}
-              isActive={keys.includes("shift")}
+              isActive={keys.includes("Shift")}
               fontSize={6.7}
             />
             <Key character="Z" isActive={keys.includes("Z")} />

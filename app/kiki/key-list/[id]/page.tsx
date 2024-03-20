@@ -1,26 +1,17 @@
 "use client";
 
 import Blank from "@/app/components/Blank";
-import Container from "@/app/components/Container";
 import Keyboard from "@/app/components/Web/Keyboard";
-import ProgramsMenu from "@/app/components/Web/ProgramsMenu";
 import SearchInput from "@/app/components/ClientSearchInput";
 import KeyList from "@/app/components/KeyList";
-import RadioContainer from "@/app/components/RadioContainer";
 import Image from "next/image";
 import BookMark from "@/app/components/icon/BookMark";
-import Main from "@/app/components/Main";
-import HeaderContainer from "@/app/components/header/HeaderContainer";
-import BackButton from "@/app/components/Button/BackButton";
-import Footer from "@/app/components/Footer";
-import fetchData from "@/utils/fetch";
+
 import Fuse from "fuse.js";
-import { SetStateAction, useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNoneUserStore } from "@/store/NoneUserStore";
-import { useRouter } from "next/router";
-import AlarmIcon from "@/app/components/icon/AlarmIcon";
-import { getShortcutBookmarks, isUserLoggedIn } from "@/utils/storage";
-import { useUserStore } from "@/store/UserStore";
+
+import { isUserLoggedIn } from "@/utils/storage";
 import useBookmark from "@/app/hooks/useBookmark";
 
 const options = {
@@ -29,6 +20,9 @@ const options = {
 };
 
 export default function KeyListPage({ params }: { params: { id: string } }) {
+  const scrollableDivRef = useRef<HTMLDivElement>(null);
+  const [divHeight, setDivHeight] = useState("auto");
+
   const data = useNoneUserStore((state) => state.shortcuts);
   const getShortcuts = useNoneUserStore((state) => state.getShortcuts);
   const shortcutPopular = useNoneUserStore((state) => state.shortcutPopular);
@@ -100,6 +94,25 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
     }
   }, [searchTerm, data]);
 
+  useEffect(() => {
+    const calculateAndSetDivHeight = () => {
+      // 스크롤 가능한 div의 상단 위치를 계산합니다.
+      const divTop = scrollableDivRef.current?.getBoundingClientRect().top ?? 0;
+      // 뷰포트 높이에서 div의 상단 위치를 빼서 div의 높이를 계산합니다.
+      const calculatedHeight = window.innerHeight - divTop;
+      setDivHeight(`${calculatedHeight}px`);
+    };
+
+    // 컴포넌트 마운트 시와 브라우저 창 크기 변경 시에 높이를 재계산합니다.
+    calculateAndSetDivHeight();
+    window.addEventListener("resize", calculateAndSetDivHeight);
+
+    // cleanup function
+    return () => {
+      window.removeEventListener("resize", calculateAndSetDivHeight);
+    };
+  }, []);
+
   const handleSearchChange = (value: string) => {
     setSearchTerm(value);
   };
@@ -122,8 +135,36 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
           color="white"
         />
         <Blank height="50px" />
+
+        <div className="flex h-[60px] w-[588px] py-[10px] pl-[30px] pr-[3px]">
+          <div className="w-[250px] text-gray300 font-semibold">문자</div>
+          <div className="flex gap-2 items-center">
+            <div className="cursor-pointer h-[40px] w-[40px]">
+              <Image
+                alt="logo"
+                src="/icons/web-icons/mac.svg"
+                width={18}
+                height={20}
+              />
+            </div>
+            <div className="cursor-pointer  h-[40px] w-[40px]">
+              <Image
+                alt="logo"
+                src="/icons/web-icons/window.svg"
+                width={20}
+                height={20}
+              />
+            </div>
+          </div>
+        </div>
+
+        <Blank height="20px" />
         <div className="">
-          <div className="flex items-center  flex-col scrollable-div">
+          <div
+            className="flex items-center  flex-col scrollable-div"
+            ref={scrollableDivRef}
+            style={{ height: divHeight }}
+          >
             {!isLoading &&
               searchResults?.map((item, index) => {
                 return (
