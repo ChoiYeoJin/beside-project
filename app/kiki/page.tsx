@@ -1,4 +1,5 @@
 import Blank from "../components/Blank";
+import RoundButton from "../components/Button/RoundButton";
 import Container from "../components/Container";
 import HomePrograms from "../components/HomePrograms";
 import HomeSearchInput from "../components/HomeSearchInput";
@@ -41,6 +42,21 @@ export default function Home() {
               <RankList itemType="단축키" startIndex={5} />
             </div>
           </div>
+        </div>
+      </div>
+      <Blank height="35px" />
+      <div className="absolute w-full h-[80px] bg-[#F8F8F8] left-0 px-[120px] flex items-center justify-between">
+        <div className="flex">
+          <div className="text-primary text-xl font-semibold ">
+            홈페이지 사용 경험을 들려주세요
+          </div>
+          <div className="text-[#ccc] text-sm ml-5">
+            키키는 여러분의 경험을 바탕으로 성장합니다. 홈페이지를 이용하며
+            느꼈던 점들을 키키 팀에게 전해주세요.
+          </div>
+        </div>
+        <div>
+          <RoundButton text="설문조사 하러 가기" />
         </div>
       </div>
     </Container>

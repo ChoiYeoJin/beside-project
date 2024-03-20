@@ -14,7 +14,7 @@ export default async function HomePrograms() {
     <div className={`flex gap-5 py-4`}>
       {programs?.map((item) => {
         return (
-          <Link href={`/pages/list/${item.platform}`} key={item.platform}>
+          <Link href={`/kiki/key-list/${item.platform}`} key={item.platform}>
             <Card height="60px" imgSrc={item.image_url} text={item.platform} />
           </Link>
         );

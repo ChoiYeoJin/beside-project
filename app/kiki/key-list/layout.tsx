@@ -1,8 +1,7 @@
-"use client";
-
 import Blank from "@/app/components/Blank";
 import Container from "@/app/components/Container";
 import ProgramsMenu from "@/app/components/Web/ProgramsMenu";
+import SearchHistory from "@/app/components/Web/SearchHistory";
 import { useFooterStore } from "@/store/FooterStore";
 
 export default function KeyListLayout({
@@ -19,7 +18,9 @@ export default function KeyListLayout({
               <ProgramsMenu />
             </div>
             <div>{children}</div>
-            <div className="w-[280px]"></div>
+            <div className="w-[280px] h-full">
+              <SearchHistory />
+            </div>
           </div>
         </div>
       </Container>
