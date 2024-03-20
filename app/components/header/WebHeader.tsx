@@ -9,8 +9,6 @@ import { useState } from "react";
 export default function WebHeader() {
   const router = useRouter();
 
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(isUserLoggedIn());
-
   const handleLoginButtonClick = () => {
     router.push("/login");
   };
