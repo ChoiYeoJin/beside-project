@@ -168,13 +168,12 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
             {!isLoading &&
               searchResults?.map((item, index) => {
                 return (
-                  <div className="flex ">
+                  <div className="flex " key={item.id}>
                     <div
                       onClick={() => {
                         setActiveKeyId(item.id);
                         setActiveKeyList(item.keys_list);
                       }}
-                      key={item.id}
                       className="flex items-center rounded-lg h-[60px] w-[588px] py-[10px] pl-[30px] pr-[3px] hover:bg-gray100 hover:text-primary transition duration-300 ease-in-out"
                     >
                       <div className="w-[250px]">
@@ -216,8 +215,6 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
                   </div>
                 );
               })}
-            <div className="w-[50%]"></div>
-            <div className="w-[50%]"></div>
           </div>
         </div>
       </div>
