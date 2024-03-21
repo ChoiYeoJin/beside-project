@@ -10,19 +10,84 @@ export default function Keyboard({ keys }: { keys: string[] }) {
         {/* Function Keys Row */}
         <div>
           <div className="flex justify-center gap-[3.83px]">
-            <Key character="F1" isActive={keys.includes("esc")} />
-            <Key character="F1" isActive={keys.includes("F1")} />
-            <Key character="F2" isActive={keys.includes("F2")} />
-            <Key character="F3" isActive={keys.includes("F3")} />
-            <Key character="F4" isActive={keys.includes("F4")} />
-            <Key character="F5" isActive={keys.includes("F5")} />
-            <Key character="F6" isActive={keys.includes("F6")} />
-            <Key character="F7" isActive={keys.includes("F7")} />
-            <Key character="F8" isActive={keys.includes("F8")} />
-            <Key character="F9" isActive={keys.includes("F9")} />
-            <Key character="F10" isActive={keys.includes("F10")} />
-            <Key character="F11" isActive={keys.includes("F11")} />
-            <Key character="F12" isActive={keys.includes("F12")} />
+            <Key
+              character="F1"
+              isActive={keys.includes("esc")}
+              fontSize={8}
+              textPosition="center"
+            />
+            <Key
+              character="F1"
+              isActive={keys.includes("F1")}
+              fontSize={8}
+              textPosition="center"
+            />
+            <Key
+              character="F2"
+              isActive={keys.includes("F2")}
+              fontSize={8}
+              textPosition="center"
+            />
+            <Key
+              character="F3"
+              isActive={keys.includes("F3")}
+              fontSize={8}
+              textPosition="center"
+            />
+            <Key
+              character="F4"
+              isActive={keys.includes("F4")}
+              fontSize={8}
+              textPosition="center"
+            />
+            <Key
+              character="F5"
+              isActive={keys.includes("F5")}
+              fontSize={8}
+              textPosition="center"
+            />
+            <Key
+              character="F6"
+              isActive={keys.includes("F6")}
+              fontSize={8}
+              textPosition="center"
+            />
+            <Key
+              character="F7"
+              isActive={keys.includes("F7")}
+              fontSize={8}
+              textPosition="center"
+            />
+            <Key
+              character="F8"
+              isActive={keys.includes("F8")}
+              fontSize={8}
+              textPosition="center"
+            />
+            <Key
+              character="F9"
+              isActive={keys.includes("F9")}
+              fontSize={8}
+              textPosition="center"
+            />
+            <Key
+              character="F10"
+              isActive={keys.includes("F10")}
+              fontSize={8}
+              textPosition="center"
+            />
+            <Key
+              character="F11"
+              isActive={keys.includes("F11")}
+              fontSize={8}
+              textPosition="center"
+            />
+            <Key
+              character="F12"
+              isActive={keys.includes("F12")}
+              fontSize={8}
+              textPosition="center"
+            />
           </div>
 
           {/* Row 1 */}
@@ -42,7 +107,7 @@ export default function Keyboard({ keys }: { keys: string[] }) {
             <Key character="=" isActive={keys.includes("=")} />
             <Key
               character="delete"
-              size={3}
+              size={4}
               isActive={keys.includes("delete")}
               fontSize={6.7}
             />

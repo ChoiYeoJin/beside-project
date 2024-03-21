@@ -125,9 +125,13 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
     <div>
       <div className="w-[588px]">
         <Blank height="60px" />
-        <Keyboard
-          keys={searchResults && searchResults.length > 0 ? activeKeyList : []}
-        />
+        <div className="flex justify-center">
+          <Keyboard
+            keys={
+              searchResults && searchResults.length > 0 ? activeKeyList : []
+            }
+          />
+        </div>
         <Blank height="50px" />
         <SearchInput
           onChange={handleSearchChange}
