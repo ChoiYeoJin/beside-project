@@ -9,7 +9,7 @@ import Main from "../../components/Main";
 import Footer from "../../components/Footer";
 import HeaderLeftText from "../../components/header/HeaderLeftText";
 import useSWR from "swr";
-import fetchData from "@/utils/fetch";
+import { fetchData } from "@/utils/fetch";
 
 export default async function Programs() {
   const data = await fetchData<Program[]>("/shortcut-keys/programs");

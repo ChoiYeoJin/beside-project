@@ -1,6 +1,6 @@
 "use client";
 
-import fetchData from "@/utils/fetch";
+import { fetchData } from "@/utils/fetch";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Blank from "../Blank";

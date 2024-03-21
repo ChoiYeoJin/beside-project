@@ -1,6 +1,6 @@
 "use client";
 import Card from "@/app/components/Card";
-import fetchData from "@/utils/fetch";
+import { fetchData } from "@/utils/fetch";
 import { isProgramBookmarked } from "@/utils/storage";
 import Link from "next/link";
 import { useEffect } from "react";

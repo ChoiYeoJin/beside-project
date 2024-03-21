@@ -1,5 +1,5 @@
 import Card from "@/app/components/Web/Card";
-import fetchData from "@/utils/fetch";
+import { fetchData } from "@/utils/fetch";
 import Link from "next/link";
 
 interface HomeProgramsProps {

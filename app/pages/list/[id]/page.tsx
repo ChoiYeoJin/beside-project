@@ -10,7 +10,7 @@ import Main from "@/app/components/Main";
 import HeaderContainer from "@/app/components/header/HeaderContainer";
 import BackButton from "@/app/components/Button/BackButton";
 import Footer from "@/app/components/Footer";
-import fetchData from "@/utils/fetch";
+import { fetchData } from "@/utils/fetch";
 import Fuse from "fuse.js";
 import { SetStateAction, useEffect, useLayoutEffect, useState } from "react";
 import { useNoneUserStore } from "@/store/NoneUserStore";

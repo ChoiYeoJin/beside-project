@@ -6,7 +6,7 @@ import Blank from "../../components/Blank";
 import { useNoneUserStore } from "@/store/NoneUserStore";
 import axios from "axios";
 import useSWR from "swr";
-import fetchData from "@/utils/fetch";
+import { fetchData } from "@/utils/fetch";
 
 export default function Rankings() {
   const [rankType, setRankType] = useState<string>("프로그램");
