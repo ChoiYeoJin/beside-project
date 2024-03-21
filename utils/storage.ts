@@ -3,9 +3,17 @@ function loginUser(token: string, refresh: string) {
   localStorage.setItem("refresh", refresh);
 }
 
+function setAccessToken(token: string) {
+  localStorage.setItem("token", token);
+}
+
 // 로그아웃 시
 function logoutUser() {
   localStorage.removeItem("token");
+}
+
+function getAccessToken() {
+  return localStorage.getItem("token");
 }
 
 function isUserLoggedIn() {
@@ -90,4 +98,6 @@ export {
   removeShortcutBookmark,
   getProgramBookmarks,
   getShortcutBookmarks,
+  setAccessToken,
+  getAccessToken,
 };

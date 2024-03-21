@@ -1,4 +1,4 @@
-import fetchData from "@/utils/fetch";
+import { fetchData } from "@/utils/fetch";
 import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";

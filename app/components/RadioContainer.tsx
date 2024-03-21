@@ -30,7 +30,7 @@ export default function RadioContainer({
           return (
             <div
               key={index}
-              className={`inline-block scroll-snap-align mr-[10px] ml-4 rounded-[20px] ${
+              className={`inline-block scroll-snap-align mr-[10px] ml-4 rounded-[20px] cursor-pointer ${
                 selectedItem === item ? "selected" : "not-selected"
               }`}
               onClick={() => handleItemClick(item)}
@@ -42,7 +42,7 @@ export default function RadioContainer({
           return (
             <div
               key={index}
-              className={`inline-block scroll-snap-align mr-[10px] rounded-[20px] ${
+              className={`inline-block scroll-snap-align mr-[10px] rounded-[20px] cursor-pointer ${
                 selectedItem === item ? "selected" : "not-selected"
               }`}
               onClick={() => handleItemClick(item)}
