@@ -27,23 +27,26 @@ export const fetchDataAuthorized = async <T>(url: string): Promise<T> => {
       },
     });
 
-    if (res.status === 401) {
+    return res.data as T;
+  } catch (error: any) {
+    if (error.response.status === 401) {
+      alert("error");
       const refreshRes = await fetchPostData<RefreshResponse>(
         "/api/token/refresh/"
       );
       setAccessToken(refreshRes.access);
 
-      res = await axios.get(SERVER_URL + url, {
+      const res = await axios.get(SERVER_URL + url, {
         headers: {
           Authorization: `Bearer ${getAccessToken()}`,
           "Content-Type": "application/json",
         },
       });
+
+      return res.data as T;
     }
 
-    return res.data as T;
-  } catch (error: any) {
-    console.error("Unable to fetch data : " + error);
+    throw new Error("Unable to fetch data : " + error);
   }
 };
 
