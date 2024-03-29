@@ -6,7 +6,6 @@ import ImageButton from "@/app/components/Button/ImageButton";
 import axios from "axios";
 import GoogleLogin from "../components/auth/GoogleLogin";
 import KakaoLogin from "../components/auth/KakaoLogin";
-import NaverLogin from "../components/auth/NaverLogin";
 import MainContainer from "../components/MainContainer";
 import Title from "../components/Title";
 import Blank from "../components/Blank";
@@ -121,7 +120,6 @@ export default function Login() {
               <div className="flex gap-5">
                 <GoogleLogin />
                 <KakaoLogin />
-                <NaverLogin />
               </div>
             </div>
           </div>
