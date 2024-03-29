@@ -59,6 +59,7 @@ export default function Home() {
           <RoundButton text="설문조사 하러 가기" />
         </div>
       </div>
+      <div id="modal-root"></div>
     </Container>
   );
 }

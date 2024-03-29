@@ -42,31 +42,15 @@ export default function HomeSearchInput() {
       <ClientSearchInput onChange={handleSearch} />
       <div
         style={{ filter: "drop-shadow(0px 5px 10px rgba(0,0,0,0.05))" }}
-        className="absolute top-full mt-2 w-full rounded-[8px] bg-white max-h-[200px]  overflow-auto z-10"
+        className="absolute top-full mt-2 w-full rounded-[8px] bg-white max-h-[200px] overflow-auto z-1"
       >
         {searchResults.map((result, index) => (
-          <div key={index} className="p-2 hover:bg-gray-100 cursor-pointer">
-            {searchResults?.map((item) => {
-              return (
-                <Link
-                  key={item.platform}
-                  href={`../pages/list/${item.platform}`}
-                >
-                  <div className="flex items-center px-[10px]">
-                    <Image
-                      src={item.image_url}
-                      width={20}
-                      height={20}
-                      alt="icon"
-                    />
-                    <div key={item.platform} className="my-[10px] mx-[10px]">
-                      {item.platform}
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
+          <Link key={result.platform} href={`../pages/list/${result.platform}`}>
+            <div className="p-2 hover:bg-gray-100 cursor-pointer flex items-center px-[10px]">
+              <Image src={result.image_url} width={20} height={20} alt="icon" />
+              <div className="my-[10px] mx-[10px]">{result.platform}</div>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

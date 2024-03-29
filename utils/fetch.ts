@@ -1,5 +1,10 @@
 import axios from "axios";
-import { getAccessToken, loginUser, setAccessToken } from "./storage";
+import {
+  getAccessToken,
+  loginUser,
+  logoutUser,
+  setAccessToken,
+} from "./storage";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URI;
 
@@ -30,7 +35,6 @@ export const fetchDataAuthorized = async <T>(url: string): Promise<T> => {
     return res.data as T;
   } catch (error: any) {
     if (error.response.status === 401) {
-      alert("error");
       const refreshRes = await fetchPostData<RefreshResponse>(
         "/api/token/refresh/"
       );
@@ -56,7 +60,12 @@ const fetchPostData = async <T>(url: string): Promise<T> => {
       refresh: localStorage.getItem("refresh"),
     });
     return data as T;
-  } catch (error) {
+  } catch (error: any) {
+    if (error.response.status === 401) {
+      alert("토큰이 만료되었습니다. 다시 로그인해주세요.");
+      logoutUser();
+      window.location.href = "/login";
+    }
     throw new Error("Unable to fetch data : " + error);
   }
 };

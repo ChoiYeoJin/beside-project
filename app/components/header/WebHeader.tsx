@@ -7,6 +7,8 @@ import { isUserLoggedIn } from "@/utils/storage";
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { fetchDataAuthorized } from "@/utils/fetch";
+import useModal from "@/app/hooks/useModal";
+import LoginModal from "../modal/LoginModal";
 
 type ProfileResponse = {
   message: "string";
@@ -16,6 +18,7 @@ type ProfileResponse = {
 export default function WebHeader() {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(false);
+  const { isOpen, openModal, closeModal } = useModal();
 
   const {
     data: profile,
@@ -30,7 +33,8 @@ export default function WebHeader() {
   );
 
   const handleLoginButtonClick = () => {
-    router.push("/login");
+    //router.push("/login");
+    openModal();
   };
 
   const handleJoinButtonClick = () => {
@@ -55,7 +59,7 @@ export default function WebHeader() {
   }, [profile]);
 
   return (
-    <header className="w-full h-[80px] px-[120px] border-b border-[#EEEEEE]">
+    <header className="w-full h-[80px] px-[120px] border-b border-[#EEEEEE] z-9999">
       <div className="flex justify-between">
         <p className="py-[28px]  cursor-pointer" onClick={handleLogoClick}>
           <Image
@@ -128,6 +132,8 @@ export default function WebHeader() {
           )}
         </div>
       </div>
+
+      <LoginModal isOpen={isOpen} close={closeModal} />
     </header>
   );
 }

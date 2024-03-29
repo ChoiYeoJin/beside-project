@@ -104,7 +104,7 @@ export default function BookMark({
       <Image
         src={
           isBookmarked
-            ? "/icons/BookmarkSimpleBlack.svg"
+            ? "/icons/BookmarkSimpleYellow.svg"
             : isBlack
             ? "/icons/BookmarkSimple.svg"
             : "/icons/BookmarkSimpleGray.svg"
