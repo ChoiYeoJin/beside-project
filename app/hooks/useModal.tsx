@@ -13,8 +13,6 @@ const useModal = () => {
     setIsOpen(true);
   };
   const closeModal = () => {
-    router.back();
-
     setIsOpen(false);
   };
 

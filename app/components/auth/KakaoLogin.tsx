@@ -27,6 +27,7 @@ export default function KakaoLogin() {
     <ImageButton
       imageSrc="/icons/social-icons/kakao.svg"
       onClick={handleKakaoLogin}
+      text="카카오 계정으로 로그인"
     />
   );
 }

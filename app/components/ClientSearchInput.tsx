@@ -21,7 +21,7 @@ export default function ClientSearchInput({
   };
 
   return (
-    <div className="relative">
+    <div className="relative z-0">
       <RoundInput
         type="text"
         placeholder={placeholder ?? "어떤 프로그램을 찾아볼까요?"}

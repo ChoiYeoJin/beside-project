@@ -19,35 +19,47 @@ const fetchCode = async (
       body = {
         access_token: code,
       };
+
+      const token_response = await axios.post(
+        "https://oauth2.googleapis.com/token",
+        {
+          code: code,
+          client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+          client_secret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
+          redirect_uri: process.env.NEXT_PUBLIC_REDIRECT_URI,
+          grant_type: "authorization_code",
+        }
+      );
+
+      const response = await axios.post(
+        `${SERVER_URL}/accounts/oauth/${provider}/`,
+        {
+          access_token: token_response.data.access_token,
+        }
+      );
+
+      const { access, refresh } = response.data;
+
+      if (response.status === 200) {
+        loginUser(access, refresh);
+        router.push("/pages/home");
+      }
     } else {
       body = {
         code: code,
       };
-    }
 
-    const token_response = await axios.post(
-      "https://oauth2.googleapis.com/token",
-      {
-        code: code,
-        client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-        client_secret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
-        redirect_uri: process.env.NEXT_PUBLIC_REDIRECT_URI,
-        grant_type: "authorization_code",
+      const response = await axios.post(
+        `${SERVER_URL}/accounts/oauth/${provider}/`,
+        body
+      );
+
+      const { access, refresh } = response.data;
+
+      if (response.status === 200) {
+        loginUser(access, refresh);
+        router.push("/pages/home");
       }
-    );
-
-    const response = await axios.post(
-      `${SERVER_URL}/accounts/oauth/${provider}/`,
-      {
-        access_token: token_response.data.access_token,
-      }
-    );
-
-    const { access, refresh } = response.data;
-
-    if (response.status === 200) {
-      loginUser(access, refresh);
-      router.push("/pages/home");
     }
   } catch (error) {
     console.error(error);

@@ -6,6 +6,7 @@ import { useEffect } from "react";
 const ModalController = () => {
   const { isOpen, openModal, closeModal } = useModal();
   const activeTab = useFooterStore((state) => state.activeTab);
+
   useEffect(() => {
     //not logged in
     openModal();

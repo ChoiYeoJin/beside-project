@@ -28,6 +28,7 @@ export default function GoogleLogin() {
     <ImageButton
       imageSrc="icons/social-icons/google.svg"
       onClick={handleGoogleLogin}
+      text="구글 계정으로 로그인"
     />
   );
 }
