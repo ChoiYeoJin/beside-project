@@ -6,7 +6,6 @@ import ImageButton from "@/app/components/Button/ImageButton";
 import axios from "axios";
 import GoogleLogin from "@/app/components/auth/GoogleLogin";
 import KakaoLogin from "@/app/components/auth/KakaoLogin";
-import NaverLogin from "@/app/components/auth/NaverLogin";
 import MainContainer from "@/app/components/MainContainer";
 import Title from "@/app/components/Title";
 import Blank from "@/app/components/Blank";
