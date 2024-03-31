@@ -29,6 +29,7 @@ export default function WebHeader() {
     () => fetchDataAuthorized<ProfileResponse>("/mypage/token"),
     {
       enabled: isLogin,
+      staleTime: Infinity,
     }
   );
 

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query-devtools": "^5.28.10",
     "axios": "^1.6.7",
     "dotenv": "^16.4.1",
     "fittext.js": "^1.2.0",
