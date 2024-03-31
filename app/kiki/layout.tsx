@@ -3,6 +3,7 @@ import { QueryClientProvider } from "react-query";
 import { queryClient } from "../components/QueryClient";
 import { useFooterStore } from "@/store/FooterStore";
 import WebHeader from "../components/header/WebHeader";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 export default function PageLayout({
   children,
@@ -15,6 +16,7 @@ export default function PageLayout({
       <QueryClientProvider client={queryClient}>
         <WebHeader />
         <section>{children}</section>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
   );

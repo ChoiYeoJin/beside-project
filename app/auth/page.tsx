@@ -42,7 +42,7 @@ const fetchCode = async (
 
       if (response.status === 200) {
         loginUser(access, refresh);
-        router.push("/pages/home");
+        router.push("/kiki");
       }
     } else {
       body = {
