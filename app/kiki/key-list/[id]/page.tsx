@@ -13,6 +13,8 @@ import { useNoneUserStore } from "@/store/NoneUserStore";
 
 import { isUserLoggedIn } from "@/utils/storage";
 import useBookmark from "@/app/hooks/useBookmark";
+import { useQuery } from "react-query";
+import { fetchData } from "@/utils/fetch";
 
 const options = {
   includeScore: true,
@@ -23,8 +25,15 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
   const scrollableDivRef = useRef<HTMLDivElement>(null);
   const [divHeight, setDivHeight] = useState("auto");
 
-  const data = useNoneUserStore((state) => state.shortcuts);
-  const getShortcuts = useNoneUserStore((state) => state.getShortcuts);
+  const { data: data, status } = useQuery<Shortcut[]>(
+    ["shortcuts", params.id],
+    () => fetchData<Shortcut[]>(`/shortcut-keys/?platform=${params.id}`),
+    {
+      staleTime: Infinity,
+    }
+  );
+
+  //const getShortcuts = useNoneUserStore((state) => state.getShortcuts);
   const shortcutPopular = useNoneUserStore((state) => state.shortcutPopular);
   const getShortcutPopular = useNoneUserStore(
     (state) => state.getShortcutPopular
@@ -35,7 +44,7 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(data);
 
-  const fuse = new Fuse(data, options);
+  const fuse = data ? new Fuse(data, options) : null;
   const [isLoading, setIsLoading] = useState(true);
   const [searchId, setSearchId] = useState("");
 
@@ -56,7 +65,7 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
   useEffect(() => {
     const fetchShortcuts = async () => {
       setIsLoading(true);
-      await getShortcuts(params.id);
+      //await getShortcuts(params.id);
 
       if (isUserLoggedIn()) {
         bookmark?.onBookmarkInit();
@@ -66,20 +75,20 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
     };
     setSearchResults([]);
     fetchShortcuts();
-  }, [params.id, getShortcuts, getShortcutPopular]);
+  }, [params.id, getShortcutPopular]);
 
   useEffect(() => {
     if (selectedFilter === "추천") {
       setSearchResults(shortcutPopular);
       setActiveKeyId(shortcutPopular[0]?.id);
-    } else if (selectedFilter === "전체") {
+    } else if (selectedFilter === "전체" && status === "success" && data) {
       setSearchResults(data);
       setActiveKeyId(data[0]?.id);
     }
   }, [data, shortcutPopular, selectedFilter]);
 
   useEffect(() => {
-    if (searchTerm.trim()) {
+    if (searchTerm.trim() && fuse) {
       const results = fuse.search(searchTerm).map((result) => result.item);
       setSearchResults(results);
       setActiveKeyId(results[0]?.id);
@@ -87,12 +96,12 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
       if (selectedFilter === "추천") {
         setSearchResults(shortcutPopular);
         setActiveKeyId(shortcutPopular[0]?.id);
-      } else if (selectedFilter === "전체") {
+      } else if (selectedFilter === "전체" && status === "success" && data) {
         setSearchResults(data);
         setActiveKeyId(data[0]?.id);
       }
     }
-  }, [searchTerm, data]);
+  }, [searchTerm, data, fuse]);
 
   useEffect(() => {
     const calculateAndSetDivHeight = () => {
