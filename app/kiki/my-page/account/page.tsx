@@ -3,6 +3,7 @@ import Blank from "@/app/components/Blank";
 import Input from "@/app/components/Input";
 import RoundInput from "@/app/components/RoundInput";
 import Dropdown from "@/app/components/Web/DropdownBox";
+import RadioButton from "@/app/components/Web/RadioButton";
 import { fetchDataAuthorized } from "@/utils/fetch";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -18,8 +19,14 @@ export default function AccountPage() {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(false);
   const [value, setValue] = useState("");
+
   const [selectedJob, setSelectedJob] = useState("없음");
   const [activeJob, setActiveJob] = useState(false);
+
+  const [selectedYear, setSelectedYear] = useState("1년차");
+  const [activeYear, setActiveYear] = useState(false);
+
+  const [selectedOS, setSelectedOS] = useState("Mac");
 
   const {
     data: profile,
@@ -39,8 +46,17 @@ export default function AccountPage() {
     setActiveJob(false);
   };
 
+  const handleYearItemClick = (item: string) => {
+    setSelectedYear(item);
+    setActiveYear(false);
+  };
+
   const handleNicknameEditButton = () => {
     router.push("/pages/myPage/editName");
+  };
+
+  const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSelectedOS(e.target.value);
   };
 
   const handleInputValueChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -91,18 +107,25 @@ export default function AccountPage() {
         <div className="relative -z-10 text-base font-semibold text-[#2B2B2B]">
           연차
         </div>
+        <div
+          onClick={() => setActiveYear(!activeYear)}
+          className="p-2 rounded w-full h-[50px] focus:outline-none text-[16px] font-light border border-[#EEEEEE]"
+        >
+          {selectedYear}
+        </div>
+        {activeYear && (
+          <Dropdown
+            onClick={handleYearItemClick}
+            items={["1년 미만", "1년~3년", "3년~5년", "5년 이상", "취준생"]}
+          />
+        )}
         <Blank height="20px" />
-        <Input
-          type="text"
-          placeholder=""
-          value={value}
-          onChange={handleInputValueChange}
-        />
 
         <Blank height="30px" />
         <div className="text-base font-semibold text-[#2B2B2B]">
           키보드 운영체제
         </div>
+        <RadioButton selected={selectedOS} onChange={handleRadioChange} />
       </div>
     </div>
   );
