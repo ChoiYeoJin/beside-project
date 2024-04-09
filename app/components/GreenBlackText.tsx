@@ -5,8 +5,10 @@ type Props = {
 
 export default function GreenBlackText({ green, black }: Props) {
   return (
-    <div className="text-xl font-semibold  text-[#222222]">
-      <p className="text-primary inline leading-9">{green}&nbsp;</p>
+    <div className="text-xl   text-[#CCCCCC]">
+      <p className="text-primary inline leading-9 mr-[5px] font-bold">
+        {green}&nbsp;
+      </p>
       {black}
     </div>
   );
