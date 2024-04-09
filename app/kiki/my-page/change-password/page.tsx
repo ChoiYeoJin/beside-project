@@ -37,6 +37,7 @@ export default function ChangePassword() {
     <div>
       <Blank height="60px" />
       <Title text="현재 비밀번호" />
+      <Blank height="20px" />
       <Input
         type="password"
         placeholder="비밀번호를 입력해 주세요."
@@ -45,8 +46,9 @@ export default function ChangePassword() {
         errorMessage={currentPasswordError}
         isPassword={true}
       />
+      <Blank height="30px" />
       <Title text="새 비밀번호" />
-
+      <Blank height="20px" />
       <Input
         type="password"
         placeholder="새 비밀번호를 입력해 주세요."
@@ -55,7 +57,9 @@ export default function ChangePassword() {
         errorMessage={newPasswordError}
         isPassword={true}
       />
+      <Blank height="30px" />
       <Title text="새 비밀번호 확인" />
+      <Blank height="20px" />
       <Input
         type="password"
         placeholder="새 비밀번호를 한번 더입력해 주세요."

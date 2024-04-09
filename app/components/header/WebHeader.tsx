@@ -81,14 +81,14 @@ export default function WebHeader() {
                     onClick={handleLoginButtonClick}
                   />
                 </div>
-                <div>
+                {/* <div>
                   <BoxButton
                     text="회원가입"
                     color="#F8F8F8"
                     bold={true}
                     onClick={handleJoinButtonClick}
                   />
-                </div>
+                </div> */}
               </div>
             </>
           )}

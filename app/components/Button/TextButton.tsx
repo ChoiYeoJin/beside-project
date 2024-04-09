@@ -15,7 +15,7 @@ export default function TextButton({
   return (
     <button
       style={{
-        backgroundColor: backgroundColor ?? "#222222",
+        backgroundColor: backgroundColor ?? "#F8F8F8",
         color: color ?? "white",
       }}
       className={buttonClass}
