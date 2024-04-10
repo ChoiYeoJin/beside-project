@@ -32,6 +32,7 @@ export default function Withdrawal() {
 
   const handleClickWithdrawalButton = () => {
     //home으로 가고 탈퇴api 들어가야함
+    router.push("/kiki?state=withdrawal");
   };
 
   useEffect(() => {

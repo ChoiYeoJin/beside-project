@@ -1,3 +1,4 @@
+import React from "react";
 import Blank from "../Blank";
 import ModalFrame from "./ModalFrame";
 
@@ -10,6 +11,8 @@ export default function WithdrawalModal({
   isOpen,
   close,
 }: WithdrawalModalProps) {
+  if (!isOpen) return null;
+
   return (
     <ModalFrame onClick={close}>
       <Blank height="40px" />

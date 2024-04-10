@@ -1,3 +1,5 @@
+"use client";
+import { useEffect } from "react";
 import Blank from "../components/Blank";
 import RoundButton from "../components/Button/RoundButton";
 import Container from "../components/Container";
@@ -6,8 +8,22 @@ import HomeSearchInput from "../components/HomeSearchInput";
 import RadioContainer from "../components/RadioContainer";
 import RankList from "../components/Web/RankList";
 import WebHeader from "../components/header/WebHeader";
+import useModal from "../hooks/useModal";
+import Withdrawal from "./my-page/withdrawal/page";
+import WithdrawalModal from "../components/modal/WithdrawalModal";
 
 export default function Home() {
+  const { isOpen, openModal, closeModal } = useModal();
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const state = queryParams.get("state");
+    openModal();
+    if (state) {
+      openModal();
+    }
+  }, []);
+
   return (
     <Container>
       <Blank height="40px" />
@@ -59,6 +75,7 @@ export default function Home() {
           <RoundButton text="설문조사 하러 가기" />
         </div>
       </div>
+      <WithdrawalModal isOpen={isOpen} close={closeModal} />
       <div id="modal-root"></div>
     </Container>
   );
