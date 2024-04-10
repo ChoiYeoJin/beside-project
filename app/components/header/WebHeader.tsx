@@ -52,6 +52,10 @@ export default function WebHeader() {
     router.push("/kiki");
   };
 
+  const handleMyPageClick = () => {
+    router.push("/kiki/my-page/account");
+  };
+
   useEffect(() => {
     if (isUserLoggedIn()) {
       setIsLogin(true);
@@ -118,7 +122,9 @@ export default function WebHeader() {
                 >
                   <ul className="">
                     <li className="px-[20px] pt-[10px] hover:bg-gray-100 cursor-pointer transition duration-300 ease-in-out ">
-                      <div className="p-[10px]">마이페이지</div>
+                      <div className="p-[10px]" onClick={handleMyPageClick}>
+                        마이페이지
+                      </div>
                     </li>
                     <li
                       className="px-[20px] pb-[10px] hover:bg-gray-100 cursor-pointer transition duration-300 ease-in-out "
