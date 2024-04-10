@@ -87,12 +87,14 @@ export default function AccountPage() {
 
       <Blank height="60px" />
       <div className="relative">
-        <div className="text-base font-semibold text-[#2B2B2B]">직업</div>
+        <div className="text-base font-semibold text-[#2B2B2B]">
+          <div>직업</div>
+        </div>
         <Blank height="20px" />
 
         <div
           onClick={() => setActiveJob(!activeJob)}
-          className="p-2 rounded w-full h-[50px] focus:outline-none text-[16px] font-light border border-[#EEEEEE]"
+          className="flex items-center p-2 rounded w-full h-[50px] focus:outline-none text-[16px] font-light border border-[#EEEEEE] text-[#A5A5A5]"
         >
           {selectedJob}
         </div>
@@ -107,9 +109,10 @@ export default function AccountPage() {
         <div className="relative -z-10 text-base font-semibold text-[#2B2B2B]">
           연차
         </div>
+        <Blank height="20px" />
         <div
           onClick={() => setActiveYear(!activeYear)}
-          className="p-2 rounded w-full h-[50px] focus:outline-none text-[16px] font-light border border-[#EEEEEE]"
+          className="flex items-center text-[#A5A5A5] p-2 rounded w-full h-[50px] focus:outline-none text-[16px] font-light border border-[#EEEEEE]"
         >
           {selectedYear}
         </div>
@@ -125,6 +128,7 @@ export default function AccountPage() {
         <div className="text-base font-semibold text-[#2B2B2B]">
           키보드 운영체제
         </div>
+        <Blank height="20px" />
         <RadioButton selected={selectedOS} onChange={handleRadioChange} />
       </div>
     </div>

@@ -8,6 +8,7 @@ type DroptdownMenuProps = {
   childTitle?: string[];
   childUrl?: string[];
   onClick: () => void;
+  titleUrl?: string;
 };
 
 export default function DropdownMenu({
@@ -16,11 +17,14 @@ export default function DropdownMenu({
   active,
   childTitle,
   childUrl,
+  titleUrl,
   onClick,
 }: DroptdownMenuProps) {
   return (
     <div className="py-[10px] cursor-pointer" onClick={onClick}>
-      <div className="text-base font-semibold leading-6">{title}</div>
+      <Link href={titleUrl ?? ""}>
+        <div className="text-base font-semibold leading-6">{title}</div>
+      </Link>
       {active && childTitle && (
         <>
           <div className="px-5 py-[10px]">
