@@ -13,16 +13,16 @@ import Withdrawal from "./my-page/withdrawal/page";
 import WithdrawalModal from "../components/modal/WithdrawalModal";
 
 export default function Home() {
-  const { isOpen, openModal, closeModal } = useModal();
+  // const { isOpen, openModal, closeModal } = useModal();
 
-  useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const state = queryParams.get("state");
-    openModal();
-    if (state) {
-      openModal();
-    }
-  }, []);
+  // useEffect(() => {
+  //   const queryParams = new URLSearchParams(window.location.search);
+  //   const state = queryParams.get("state");
+  //   openModal();
+  //   if (state) {
+  //     openModal();
+  //   }
+  // }, []);
 
   return (
     <Container>
