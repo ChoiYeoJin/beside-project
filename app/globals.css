@@ -66,6 +66,7 @@ div {
   color: white;
   background-color: #222222;
   font-weight: bold;
+  border: 1px solid transparent;
 }
 
 .not-selected {

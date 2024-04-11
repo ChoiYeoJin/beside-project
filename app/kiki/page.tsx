@@ -47,7 +47,7 @@ export default function Home() {
           </div>
           <Blank height="20px" />
           <div>
-            <RadioContainer items={["피그마", "excel"]} />
+            <RadioContainer items={["전체"]} />
           </div>
           <Blank height="30px" />
           <div className="flex">
