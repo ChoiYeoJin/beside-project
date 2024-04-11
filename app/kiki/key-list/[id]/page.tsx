@@ -78,21 +78,17 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
   }, [params.id, getShortcutPopular]);
 
   useEffect(() => {
-    if (selectedFilter === "추천") {
-      setSearchResults(shortcutPopular);
-      setActiveKeyId(shortcutPopular[0]?.id);
-    } else if (selectedFilter === "전체" && status === "success" && data) {
-      setSearchResults(data);
-      setActiveKeyId(data[0]?.id);
-    }
-  }, [data, shortcutPopular, selectedFilter]);
-
-  useEffect(() => {
     if (searchTerm.trim() && fuse) {
       const results = fuse.search(searchTerm).map((result) => result.item);
       setSearchResults(results);
       setActiveKeyId(results[0]?.id);
-    } else {
+    }
+  }, [searchTerm, fuse]);
+
+  // 선택 필터에 따른 데이터 처리를 별도의 useEffect로 분리
+  useEffect(() => {
+    if (!searchTerm.trim()) {
+      // 검색어가 비어있을 때만 필터 로직을 적용
       if (selectedFilter === "추천") {
         setSearchResults(shortcutPopular);
         setActiveKeyId(shortcutPopular[0]?.id);
@@ -101,7 +97,15 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
         setActiveKeyId(data[0]?.id);
       }
     }
-  }, [searchTerm, data, fuse]);
+  }, [selectedFilter, shortcutPopular, data, status]);
+
+  useEffect(() => {
+    // 검색 결과나 필터링 결과가 변경될 때 첫 번째 항목을 활성화
+    if (searchResults && searchResults.length > 0) {
+      //setActiveKeyId(searchResults[0].id);
+      //setActiveKeyList(searchResults[0].keys_list);
+    }
+  }, [searchResults]);
 
   useEffect(() => {
     const calculateAndSetDivHeight = () => {
