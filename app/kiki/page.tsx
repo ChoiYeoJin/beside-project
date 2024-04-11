@@ -75,7 +75,7 @@ export default function Home() {
           <RoundButton text="설문조사 하러 가기" />
         </div>
       </div>
-      <WithdrawalModal isOpen={isOpen} close={closeModal} />
+      {/* <WithdrawalModal isOpen={isOpen} close={closeModal} /> */}
       <div id="modal-root"></div>
     </Container>
   );
