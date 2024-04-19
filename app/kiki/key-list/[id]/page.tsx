@@ -100,16 +100,11 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
   }, [selectedFilter, shortcutPopular, data, status]);
 
   useEffect(() => {
-    // 검색 결과나 필터링 결과가 변경될 때 첫 번째 항목을 활성화
-    if (
-      searchResults &&
-      searchResults.length > 0 &&
-      searchResults[0].id !== activeKeyId
-    ) {
+    if (searchResults && searchResults.length > 0) {
       setActiveKeyId(searchResults[0].id);
       setActiveKeyList(searchResults[0].keys_list);
     }
-  }, [searchResults, activeKeyId]);
+  }, [searchResults]);
 
   useEffect(() => {
     const calculateAndSetDivHeight = () => {
