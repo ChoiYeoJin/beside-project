@@ -1,4 +1,3 @@
-"use client";
 import { useEffect } from "react";
 import Blank from "../components/Blank";
 import RoundButton from "../components/Button/RoundButton";
@@ -7,10 +6,6 @@ import HomePrograms from "../components/HomePrograms";
 import HomeSearchInput from "../components/HomeSearchInput";
 import RadioContainer from "../components/RadioContainer";
 import RankList from "../components/Web/RankList";
-import WebHeader from "../components/header/WebHeader";
-import useModal from "../hooks/useModal";
-import Withdrawal from "./my-page/withdrawal/page";
-import WithdrawalModal from "../components/modal/WithdrawalModal";
 
 export default function Home() {
   // const { isOpen, openModal, closeModal } = useModal();
