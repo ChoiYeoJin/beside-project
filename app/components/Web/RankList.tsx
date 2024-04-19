@@ -27,7 +27,7 @@ export default async function RankList({
           <div className="flex justify-between py-[10px]  px-[12px] w-full">
             <div className="flex items-center">
               <p className="text-primary font-bold  mr-[10px] text-[16px] w-[15px]">
-                {index + 1}
+                {startIndex === undefined ? index + 1 : startIndex + index + 1}
               </p>
               <div className="mr-[10px]">
                 <Image
