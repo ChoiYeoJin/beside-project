@@ -13,7 +13,7 @@ const nextConfig = {
     return [
       {
         source: "/",
-        destination: "/pages/home",
+        destination: "/kiki",
         permanent: true,
       },
     ];
