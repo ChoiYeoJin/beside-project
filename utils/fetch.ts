@@ -69,3 +69,49 @@ const fetchPostData = async <T>(url: string): Promise<T> => {
     throw new Error("Unable to fetch data : " + error);
   }
 };
+
+export const updateShortcut = async ({
+  platform,
+  shortcutId,
+}: {
+  platform: string;
+  shortcutId: string;
+}) => {
+  const url = `/shortcut-keys/click-history/?platform=${platform}&shortcut_id=${shortcutId}`;
+  try {
+    let res = await axios.post(
+      SERVER_URL + url,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return res.data;
+  } catch (error: any) {
+    if (error.response.status === 401) {
+      const refreshRes = await fetchPostData<RefreshResponse>(
+        "/api/token/refresh/"
+      );
+      setAccessToken(refreshRes.access);
+
+      const res = await axios.post(
+        SERVER_URL + url,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${getAccessToken()}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      return res.data;
+    }
+
+    throw new Error("Unable to fetch data : " + error);
+  }
+};

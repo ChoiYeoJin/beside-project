@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "./Input";
 import Image from "next/image";
 import RoundInput from "./RoundInput";
@@ -8,17 +8,25 @@ type ClientSearchInputProps = {
   onChange: (value: string) => void;
   placeholder?: string;
   color?: string;
+  value?: string;
 };
 export default function ClientSearchInput({
   onChange,
   placeholder,
   color,
+  value,
 }: ClientSearchInputProps) {
   const [search, setSearch] = useState<string>("");
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
     onChange(event.target.value);
   };
+
+  useEffect(() => {
+    if (value) {
+      setSearch(value);
+    }
+  }, [value]);
 
   return (
     <div className="relative z-0">

@@ -8,13 +8,13 @@ import Image from "next/image";
 import BookMark from "@/app/components/icon/BookMark";
 
 import Fuse from "fuse.js";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { useNoneUserStore } from "@/store/NoneUserStore";
 
 import { isUserLoggedIn } from "@/utils/storage";
 import useBookmark from "@/app/hooks/useBookmark";
-import { useQuery } from "react-query";
-import { fetchData } from "@/utils/fetch";
+import { useMutation, useQuery } from "react-query";
+import { fetchData, fetchDataAuthorized, updateShortcut } from "@/utils/fetch";
 
 const options = {
   includeScore: true,
@@ -44,7 +44,10 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(data);
 
-  const fuse = data ? new Fuse(data, options) : null;
+  const fuse = useMemo(() => {
+    return data ? new Fuse(data, options) : null;
+  }, [data]); // data가 변경될 때만 Fuse 인스턴스를 재생성합니다.
+
   const [isLoading, setIsLoading] = useState(true);
   const [searchId, setSearchId] = useState("");
 
@@ -53,72 +56,16 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
   const [activeKeyId, setActiveKeyId] = useState<string | null>(null);
   const [activeKeyList, setActiveKeyList] = useState<string[]>([]);
 
+  const [searchIdValue, setSearchIdValue] = useState<string>("");
   useEffect(() => {
     if (typeof window !== "undefined") {
       const queryParams = new URLSearchParams(window.location.search);
-      const searchIdValue = queryParams.get("searchId");
-
-      setSearchTerm(searchIdValue || "");
-    }
-  }, []);
-
-  useEffect(() => {
-    const fetchShortcuts = async () => {
-      setIsLoading(true);
-      //await getShortcuts(params.id);
-
-      if (isUserLoggedIn()) {
-        bookmark?.onBookmarkInit();
-      }
-
-      setIsLoading(false);
-    };
-    setSearchResults([]);
-    fetchShortcuts();
-  }, [params.id, getShortcutPopular]);
-
-  useEffect(() => {
-    if (searchTerm.trim() && fuse) {
-      const results = fuse.search(searchTerm).map((result) => result.item);
-      setSearchResults(results);
-      setActiveKeyId(results[0]?.id);
-    }
-  }, [searchTerm, fuse]);
-
-  // 선택 필터에 따른 데이터 처리를 별도의 useEffect로 분리
-  useEffect(() => {
-    if (!searchTerm.trim()) {
-      // 검색어가 비어있을 때만 필터 로직을 적용
-      if (selectedFilter === "추천") {
-        setSearchResults(shortcutPopular);
-        setActiveKeyId(shortcutPopular[0]?.id);
-      } else if (selectedFilter === "전체" && status === "success" && data) {
-        setSearchResults(data);
-        setActiveKeyId(data[0]?.id);
+      const initialSearchIdValue = queryParams.get("searchDescription") ?? "";
+      setSearchIdValue(initialSearchIdValue);
+      if (initialSearchIdValue.trim()) {
+        setSearchTerm(initialSearchIdValue); // 초기 검색어를 설정합니다.
       }
     }
-  }, [selectedFilter, shortcutPopular, data, status]);
-
-  useEffect(() => {
-    // 검색 결과나 필터링 결과가 변경될 때 첫 번째 항목을 활성화
-    if (searchResults && searchResults.length > 0) {
-      setActiveKeyId(searchResults[0].id);
-      setActiveKeyList(searchResults[0].keys_list);
-    }
-
-    if (!searchTerm.trim()) {
-      // 검색어가 비어있을 때만 필터 로직을 적용
-      if (selectedFilter === "추천") {
-        setSearchResults(shortcutPopular);
-        setActiveKeyId(shortcutPopular[0]?.id);
-      } else if (selectedFilter === "전체" && status === "success" && data) {
-        setSearchResults(data);
-        setActiveKeyId(data[0]?.id);
-      }
-    }
-  }, [searchResults]);
-
-  useEffect(() => {
     const calculateAndSetDivHeight = () => {
       // 스크롤 가능한 div의 상단 위치를 계산합니다.
       const divTop = scrollableDivRef.current?.getBoundingClientRect().top ?? 0;
@@ -137,12 +84,92 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
     };
   }, []);
 
+  useEffect(() => {
+    const fetchShortcuts = async () => {
+      setIsLoading(true);
+      //await getShortcuts(params.id);
+
+      if (isUserLoggedIn()) {
+        bookmark?.onBookmarkInit();
+      }
+
+      setIsLoading(false);
+    };
+    setSearchResults([]);
+    fetchShortcuts();
+  }, [params.id, getShortcutPopular]);
+
+  // useEffect(() => {
+  //   // 초기 값이 설정된 후 한 번만 검색 실행
+  //   if (searchIdValue && fuse) {
+  //     const results = fuse.search(searchIdValue).map((result) => result.item);
+  //     setSearchResults(results);
+  //     if (results.length > 0) {
+  //       setActiveKeyId(results[0]?.id);
+  //     }
+  //   }
+  // }, [searchIdValue, fuse]); // searchIdValue 초기 설정 후에만 실행
+
+  useEffect(() => {
+    // 사용자 입력에 의한 검색 실행
+    if (searchTerm.trim() && fuse) {
+      const results = fuse.search(searchTerm).map((result) => result.item);
+      setSearchResults(results);
+      if (results.length > 0) {
+        setActiveKeyId(results[0]?.id);
+      }
+    }
+  }, [searchTerm, fuse]); // searchTerm 변경 시에만 실행
+
+  // 선택 필터에 따른 데이터 처리를 별도의 useEffect로 분리
+  useEffect(() => {
+    if (!searchTerm.trim()) {
+      // 검색어가 비어있을 때만 필터 로직을 적용
+      if (selectedFilter === "전체" && status === "success" && data) {
+        setSearchResults(data);
+        setActiveKeyId(data[0]?.id);
+      }
+    }
+  }, [selectedFilter, data, status]);
+
+  useEffect(() => {
+    // 검색 결과나 필터링 결과가 변경될 때 첫 번째 항목을 활성화
+    if (searchResults && searchResults.length > 0) {
+      setActiveKeyId(searchResults[0].id);
+      setActiveKeyList(searchResults[0].keys_list);
+    }
+
+    if (!searchTerm.trim()) {
+      // 검색어가 비어있을 때만 필터 로직을 적용
+      if (selectedFilter === "전체" && status === "success" && data) {
+        setSearchResults(data);
+        setActiveKeyId(data[0]?.id);
+      }
+    }
+  }, [searchResults]);
+
   const handleSearchChange = (value: string) => {
     setSearchTerm(value);
   };
 
   const handleFilterChange = (value: string) => {
     setSelectedFilter(value);
+  };
+
+  const mutation = useMutation(updateShortcut, {
+    onSuccess: (data) => {
+      console.log("Data update success", data);
+    },
+    onError: (error) => {
+      console.log("Failed to update data", error);
+    },
+  });
+  const handleListClick = (item: Shortcut) => {
+    setActiveKeyId(item.id);
+    setActiveKeyList(item.keys_list);
+    if (isUserLoggedIn()) {
+      mutation.mutate({ platform: params.id, shortcutId: item.id });
+    }
   };
 
   return (
@@ -161,6 +188,7 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
           onChange={handleSearchChange}
           placeholder="궁금한 기능을 검색해 보세요."
           color="white"
+          value={searchIdValue}
         />
         <Blank height="50px" />
 
@@ -198,11 +226,7 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
                 return (
                   <div className="flex " key={item.id}>
                     <div
-                      onClick={() => {
-                        setActiveKeyId(item.id);
-                        setActiveKeyList(item.keys_list);
-                        console.log(item.id);
-                      }}
+                      onClick={() => handleListClick(item)}
                       className="flex items-center rounded-lg h-[60px] w-[588px] py-[10px] pl-[30px] pr-[3px] hover:bg-gray100 hover:text-primary transition duration-300 ease-in-out"
                     >
                       <div className="w-[250px]">

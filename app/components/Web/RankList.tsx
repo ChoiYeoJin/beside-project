@@ -19,9 +19,11 @@ export default async function RankList({
     <div>
       {shortcuts?.map((item, index) => (
         <Link
-          href={`/kiki/key-list/${item.platform}?searchId=${item.keys_list.join(
-            "+"
-          )}`}
+          href={`/kiki/key-list/${encodeURIComponent(
+            item.platform
+          )}?searchId=${encodeURIComponent(
+            item.keys_list.join("+")
+          )}&searchDescription=${encodeURIComponent(item.description)}`}
           key={item.id}
         >
           <div className="flex justify-between py-[10px]  px-[12px] w-full">
