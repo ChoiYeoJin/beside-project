@@ -116,7 +116,17 @@ export default function KeyListPage({ params }: { params: { id: string } }) {
       const results = fuse.search(searchTerm).map((result) => result.item);
       setSearchResults(results);
       if (results.length > 0) {
-        setActiveKeyId(results[0]?.id);
+        setActiveKeyId(results[0].id);
+      } else {
+        setActiveKeyId(null); // 검색 결과가 없는 경우 처리
+      }
+    } else {
+      // 검색어가 비어있는 경우 전체 데이터를 보여줍니다.
+      setSearchResults(data);
+      if (data && data.length > 0) {
+        setActiveKeyId(data[0].id); // 첫 번째 키를 활성화
+      } else {
+        setActiveKeyId(null); // 데이터가 없는 경우 처리
       }
     }
   }, [searchTerm, fuse]); // searchTerm 변경 시에만 실행
